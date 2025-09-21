@@ -1,13 +1,16 @@
 # My Project
 
-A simple C++ program that demonstrates function pointers and smart pointers.
+A comprehensive C++ resource focusing on function pointers, smart pointers, and essential Data Structures and Algorithms (DSA).
 
 ## Features
-- Demonstrates function pointer usage
-- Covers a wide range of Data Structures and Algorithms (DSA) topics
-- Includes detailed explanations and code examples for each topic
-- Provides practice questions and solutions for interview preparation
-- Organized for easy navigation and progressive learning
-- Suitable for beginners and advanced learners
-- Regularly updated with new topics and questions
-- Community contributions are welcome
+- Practical examples of function and smart pointer usage
+- Extensive coverage of DSA topics with clear explanations
+- Code samples and step-by-step solutions for interview preparation
+- Well-organized for progressive learning and easy navigation
+- Suitable for both beginners and advanced learners
+- Frequently updated with new topics and questions
+- Open to community contributions
+
+This repository aims to build a strong foundation in C++ and DSA. Contributions with clear explanations and code snippets are encouraged to expand the collection.
+
+All content is original, based on personal study and experience, with no external copying.
