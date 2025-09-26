@@ -22,7 +22,15 @@ class intarray{
     int& at(int index){
         return array[index];
     }
+    void print();       //need to initalsize first inside the class then call them
 };
+
+void intarray::print(){     //calliing a func outside the class
+    for(int i=0;i<10;i++){
+        cout<<array[i]<<" ";
+    }
+}
+
 int main(){
     // template is used for write ones and use it again and again 
     // cout<<saikumar(8,9)<<endl;
@@ -36,12 +44,12 @@ int main(){
 
 
     //the main difference between func and class template is in class template we can add any sata struc 
-// intarray arr;
-// arr.fill(10);
-// arr.at(5)=100;
+intarray arr;
+arr.fill(10);
+arr.at(5)=50;
 // for(int i=0;i<10;i++){
 //     cout<<arr.at(i)<<" ";
 // }
-
+arr.print();
     return 0;
 }

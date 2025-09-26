@@ -47,7 +47,7 @@ class test{
 class MyMain{
     test t;
     public:
-        MyMain():t(10){
+        MyMain():t(10){                 //without initalizer the output will be default and paramertised
             t=test(10);
         }               //in initalizer it direclty assignes it but in default it creates first and then assigns
 };
@@ -55,7 +55,7 @@ class MyMain{
 
 //copy constructor
 
-
+//when ever we use pointer in class remeber we need to use the dynamic memory allocation and destroy afterwards
 class login{
     int *ptr;
     public:
@@ -233,6 +233,9 @@ class none1:public maid1{
         cout << "\n";
     }
 };
+
+
+
 int main(){
     // OOPS is a way to build a software
     // class: is a datatype with function
@@ -271,11 +274,11 @@ int main(){
 
     // player p1;
     // cout<<p1.count<<endl;
-    // // {
-    //     player p2;          
+    // {
+        //  player p2;          
     // cout<<player::count<<endl;          //the recommened way to access the static value is by assing it from the class
-    // // }
-    // cout<<player::count;
+    // }
+    // cout<<player::count<<endl;
     // cout<<player::getcount();
 
 // #pragma message("this is a messgae"); IMPORTANT

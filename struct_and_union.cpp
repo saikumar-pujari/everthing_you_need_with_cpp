@@ -83,7 +83,7 @@ int main(){
     // saikumar *ptr=&p;
     // cout<<ptr->x<<endl;                  //its struct as a pointer
     // ptr->x=100;
-    // cout<<ptr->x<<endl;
+    // cout<<ptr->x<<endl;  //in pointer the dot is not used when comparing it uses the -> method!!
 
     // nikhil p={10,20};
     // print(p);                //struct as a argument

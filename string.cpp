@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     // string starts drom 65-90 and small from 97-122
     // char s[]="gfg",s2[]={'g','g','g'};
-    // // cout<<strlen(s);
+    // cout<<strlen(s)<<endl;
     // cout<<strcmp(s,s2)<<endl;  //only give s 0,1,-1
     // int res=strcmp(s,s2);
     // if(res>0){
@@ -22,7 +22,7 @@ int main(){
 
     //.find in string (if not prsent then ::npos)
 
-    //getline is used untill the suer enter the entr  button
+    //getline is used untill the user enter the enter  button
     // string name;
     // cin>>name;
     // cout<<"your name is "<<name;  //after the space its not gonna print
@@ -44,7 +44,7 @@ int main(){
     // }
     // cout<<rev;
 
-    // string name="100";
+    // string name="1001";
     // int base=1;
     // int ans=0;
     // int size=name.size();

@@ -41,6 +41,7 @@ int compute(int a,int b,int (*fun_prt)(int,int)){       //in function we cant us
 }
 
 bool compare(int c,int d){return abs(c)<abs(d);}
+
 int main(){
     // int x=10;
     // int *p=&x;
@@ -48,7 +49,7 @@ int main(){
     // cout<<*p;
     // cout << "\n";
     // cout<<m;
-    // delete p;
+    // delete p;        deleteing the pointer only when the pointer is dynamically pointing(heap) aka. new or new[] only
 
 
 

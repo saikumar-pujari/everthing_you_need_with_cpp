@@ -22,7 +22,7 @@ void funcx(int *ptr){
 int main(){
     // int x=0;
     // cout<<&x<<endl;
-    // // cout<<**x<<endl;
+    // cout<<**x<<endl;
     // cout<<*(&x)<<endl;
     // cout<<x<<endl;
     // cout<<"pointer"<<endl;
@@ -44,7 +44,7 @@ int main(){
     // double *f;
     // cout<<sizeof(x)<<endl;
     // cout<<sizeof(r)<<endl;
-    // cout<<sizeof(f)<<endl;
+    // cout<<sizeof(f)<<endl;  //size of a pointer in 32bit is always 4 and 64 bit is 8
     // cout<<endl; 
 
 
@@ -62,7 +62,7 @@ int main(){
    
 
     //in fun called by a array always asign the size with the array so that in fun it should not be treated as a pointer
-    // int arr[]={10,20,30,40};
+    // int arr[]={10,20,30,40,50};
     // cout<<(arr)<<endl;
     // cout<<(arr+1)<<endl;
     // cout<<*(arr)<<endl;
@@ -72,7 +72,7 @@ int main(){
     // ptr++;
     // cout<<*ptr<<endl;
     // cout<<ptr<<endl;
-    // cout<<ptr[2]; //pointer satrts the value from 1 not as 0 
+    // cout<<ptr[2]; //pointer satrts the value from 0(the valeu should be 40 cuz in previous step we made a ptr++ which now indicated to arr[1] so, from there p[2] which means 3rd element which is 40) 
 
     // int arr[]={10,20,30,40};
     // int *p1=arr;
@@ -114,13 +114,14 @@ int main(){
     // cout<<endl;
     // cout<<*(ptr+2); //garbage value  
     // delete ptr;
+    // ptr=nullptr;
     // cout<<endl;
-    // cout<<*(ptr+3);
+    // cout<<*(ptr+3)<<"ya it wont workk";
     // cout<<endl;
     
     // int arr[] = { 4, 5, 6, 7 };
     // int* p = (arr + 1);
-    // cout << *arr + 10;
+    // cout << *arr + 10;  //arr is refered to the first element
     // cout<<endl;
     // cout<<*p;
 
