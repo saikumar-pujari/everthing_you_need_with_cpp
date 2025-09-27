@@ -73,6 +73,34 @@ int main(){
     // 4) Custom smart pointers: Like the 'sp' class above, can be implemented for specific needs.
 
 
+    unique_ptr<int>st=make_unique<int>(10);
+    cout<<*st;
+    cout<<endl;
+    // cout<<st.use_count()<<endl;  //error as unique pointer does not have any count()!! we can transfer unique to shared if we want
+
+    shared_ptr<int>sst=make_shared<int>(100);
+    cout<<*sst; //1
+    cout<<endl;
+    auto p=sst;
+    cout<<*p;       //2
+    cout<<endl;
+    auto pq=p;
+    cout<<pq<<endl; //3
+    cout<<p.use_count()<<" "; //3
+    cout<<sst.use_count()<<" "; //3
+    cout<<endl;
+    cout<<endl;
+
+    unique_ptr<int>sai=make_unique<int>(70504);     //any number staring with 0 will be a octet form!!
+    shared_ptr<int>saikumar=move(sai);
+    cout<<*saikumar<<endl;
+    cout<<"count is :"<<saikumar.use_count()<<endl;
+    auto niki=saikumar;
+    cout<<*niki<<endl;
+    cout<<"count is :"<<niki.use_count()<<endl;
+    if(!sai){
+        cout<<"unique pointer is empty now man!!\n";
+    }
 
 
     // --------------------------------------------------
