@@ -11,7 +11,7 @@ public:
         x = val;
     }
     void print(){
-        cout<<x;
+        cout<<x; // Expected output: value of x
     }
 };
 
@@ -28,7 +28,7 @@ class point{
         y=y1;
     }
     void print(){
-        cout<<x<<" "<<y<<endl;
+        cout<<x<<" "<<y<<endl; // Expected output: values of x and y separated by space
     }
 };
 
@@ -37,10 +37,10 @@ class test{
     public:
     int x;
         test(){
-            cout<<"default\n";
+            cout<<"default\n"; // Expected output: default
         }
         test(int x){
-            cout<<"parameterizes\n";
+            cout<<"parameterizes\n"; // Expected output: parameterizes
         }
 };
 
@@ -66,7 +66,7 @@ class login{
             *ptr=x;
         }
         void print(){
-            cout<<*ptr<<endl;
+            cout<<*ptr<<endl; // Expected output: value pointed by ptr
         }
 
 
@@ -77,10 +77,10 @@ class login{
 class dest{
     public:
     dest(){
-        cout<<"created it man"<<endl;
+        cout<<"created it man"<<endl; // Expected output: created it man
     }
     ~dest(){                            //destructor is called if the value is out of scope man 
-        cout<<"destory it man";
+        cout<<"destory it man"; // Expected output: destory it man
     }
 };
 
@@ -94,13 +94,13 @@ public:
     Student(int subjects) {
         n = subjects;
         marks = new int[n];  // dynamic memory allocated here
-        cout << "Allocated memory for " << n << " subjects" << endl;
+        cout << "Allocated memory for " << n << " subjects" << endl; // Expected output: Allocated memory for <n> subjects
     }
 
     // destructor
     ~Student() {
         delete[] marks;  // free memory when object is destroyed
-        cout << "Memory freed" << endl;
+        cout << "Memory freed" << endl; // Expected output: Memory freed
     }
 };
 
@@ -122,7 +122,7 @@ class pointer{
             return *this;
         }
        void print(){
-        cout<<x<<" "<<y<<endl;
+        cout<<x<<" "<<y<<endl; // Expected output: values of x and y separated by space
        }
 
 };
@@ -136,9 +136,9 @@ class player{
     static int count;
     player(){count++;};
     ~player(){count--;};
-    static int getcount(){return count;}
+    static int getcount(){return count;} // Expected output: current count value
 };
-int player::count=0;              //import  //static-members should be defined outside the class or compiler will thorw an error man
+int player::count=0;              //important //static-members should be defined outside the class or compiler will thorw an error man
 
 
 // --------------------------------------------------------------------------------------
@@ -172,7 +172,8 @@ class teachers : public student {
             this->marks=marks;
         }
         void print() {
-            cout <<"name is: "<< name << " the id is: " << id << "and the marks are: " << marks;
+            cout <<"name is: "<< name << " the id is: " << id << "and the marks are: " << marks; 
+            // Expected output: name is: <name> the id is: <id>and the marks are: <marks>
         }
 };
 
@@ -194,7 +195,7 @@ class c:public a,public b{
         this->marks=marks;
     }
     void print(){
-        cout<<name<<" "<<marks<<" "<<id;
+        cout<<name<<" "<<marks<<" "<<id; // Expected output: <name> <marks> <id>
     }
 };
 
@@ -206,14 +207,14 @@ class c:public a,public b{
 class maid{
     public:
     void show(){
-        cout<<"base_case";
+        cout<<"base_case"; // Expected output: base_case
         cout << "\n";
     }
 };
 class none:public maid{
     public:
     void show(){
-        cout<<"derived_case";           //even though we called the derived class but the base class will be excuted cuz both point at a same direction.
+        cout<<"derived_case"; // Expected output: derived_case
         cout << "\n";
     }
 };
@@ -222,14 +223,14 @@ class none:public maid{
 class maid1{
     public:
     virtual void show(){
-        cout<<"base_case";
+        cout<<"base_case"; // Expected output: base_case
         cout << "\n";
     }
 };
 class none1:public maid1{
     public:
-    void show(){
-        cout<<"derived_case";           //by using virtual we can know that they both to a same direction and we need the derived one not the
+    void show() override{
+        cout<<"derived_case"; // Expected output: derived_case
         cout << "\n";
     }
 };
@@ -243,65 +244,62 @@ int main(){
 
 
     // MyClass p(412545454354);
-    // p.print();
-
+    // p.print(); // Expected output: 412545454354
 
     // point p1,p2(10,20);
-    // p1.print();
-    // p2.print();
+    // p1.print(); // Expected output: 0 0
+    // p2.print(); // Expected output: 10 20
     // point *ptr=new point(10,60);
-    // ptr->print();
+    // ptr->print(); // Expected output: 10 60
     // delete ptr;
 
-    // MyMain m;
+    // MyMain m; // Expected output: parameterizes
 
     // login t1(10);
     // login t2(t1);
     // t2.set(20);
-    // t1.print();
-    // t2.print();
+    // t1.print(); // Expected output: 20
+    // t2.print(); // Expected output: 20
 
-    // dest f;
+    // dest f; // Expected output: created it man (on creation), destory it man (on destruction)
 
+    //  Student s1(5); // Expected output: Allocated memory for 5 subjects
+    // (on destruction) Expected output: Memory freed
 
-    //  Student s1(5);
-    
     // pointer p(1,2);
-    // p.print();
+    // p.print(); // Expected output: 1 2
     // cout<<endl;
-    // p.setx(10).sety(20).print();            //chaining of functions to be perform in the outgrowth of the func
-
+    // p.setx(10).sety(20).print(); // Expected output: 10 20
 
     // player p1;
-    // cout<<p1.count<<endl;
+    // cout<<p1.count<<endl; // Expected output: 1
     // {
-        //  player p2;          
-    // cout<<player::count<<endl;          //the recommened way to access the static value is by assing it from the class
+    //     player p2;          
+    //     cout<<player::count<<endl; // Expected output: 2
+    // cout<<player::getcount()<<endl; // Expected output: 2
     // }
-    // cout<<player::count<<endl;
-    // cout<<player::getcount();
+    // cout<<player::count<<endl; // Expected output: 1
+    // cout<<player::getcount(); // Expected output: 1
 
 // #pragma message("this is a messgae"); IMPORTANT
-    
 
 // teachers t1;
 // t1.setdata("saikumar","1MV23CS133",45);
-// t1.print();
+// t1.print(); // Expected output: name is: saikumar the id is: 1MV23CS133and the marks are: 45
 
 // c d;
 // d.setdata("saikumar",48556,100);
-// d.print();
+// d.print(); // Expected output: saikumar 100 48556
 
+maid *b;
+none d;
+b=&d;
+b->show(); // Expected output: Base_case
 
-// maid *b;
-// none d;
-// b=&d;
-// b->show();
-
-// maid1 *b1;
-// none1 d1;
-// b1=&d1;
-// b1->show();
+maid1 *b1;
+none1 d1;
+b1=&d1;
+b1->show(); // Expected output: derived_case
 
     return 0;
 }

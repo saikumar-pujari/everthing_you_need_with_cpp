@@ -7,7 +7,7 @@ t saikumar(t x,t y){
 }
 template <typename t, size_t N>
 void nikhil(const t (&arr)[N]){
-    for(size_t i=0; i<N; i++) cout << arr[i] << " ";
+    for(size_t i=0; i<N; i++) cout << arr[i] << " "; // Expected output: 10 20 30 40 50 60 
 }
 
 
@@ -27,29 +27,27 @@ class intarray{
 
 void intarray::print(){     //calliing a func outside the class
     for(int i=0;i<10;i++){
-        cout<<array[i]<<" ";
+        cout<<array[i]<<" "; // Expected output: 10 10 10 10 10 50 10 10 10 10 
     }
 }
 
 int main(){
     // template is used for write ones and use it again and again 
-    // cout<<saikumar(8,9)<<endl;
-    // cout<<saikumar(8.5,8.1)<<endl;
-    // cout<<saikumar('g','f')<<endl;          
-     //if we use template we dont care about the data type cuz its pre defined in the template as the type
-
+    // cout<<saikumar(8,9)<<endl; // Expected output: 9
+    // cout<<saikumar(8.5,8.1)<<endl; // Expected output: 8.5
+    // cout<<saikumar('g','f')<<endl; // Expected output: g
+    // ...existing code...
 
     //  int nuums[]={10,20,30,40,50,60};
-    // nikhil(nuums);
+    // nikhil(nuums); // Expected output: 10 20 30 40 50 60 
 
-
-    //the main difference between func and class template is in class template we can add any sata struc 
-intarray arr;
-arr.fill(10);
-arr.at(5)=50;
-// for(int i=0;i<10;i++){
-//     cout<<arr.at(i)<<" ";
-// }
-arr.print();
+    // ...existing code...
+    intarray arr;
+    arr.fill(10);
+    arr.at(5)=50;
+    // for(int i=0;i<10;i++){
+    //     cout<<arr.at(i)<<" "; // Expected output: 10 10 10 10 10 50 10 10 10 10 
+    // }
+    arr.print(); // Expected output: 10 10 10 10 10 50 10 10 10 10 
     return 0;
 }
