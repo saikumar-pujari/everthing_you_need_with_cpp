@@ -141,9 +141,6 @@ bool deletePatientNodeSP(std::shared_ptr<patientnodesp>& head, int id) {
 
 
 
-
-
-
 template <typename T>
 class RecordManager {
     struct Node {

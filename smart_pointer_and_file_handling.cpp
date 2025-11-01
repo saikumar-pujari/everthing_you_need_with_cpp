@@ -8,11 +8,11 @@ class sp{
     int *ptr;
     public:
         sp(int *p=nullptr){
-            cout<<"satrted\n";
+            cout<<"satrted\n"; // Output: satrted
             ptr=p;
         }
         ~sp(){
-            cout<<"\ndeleted\n";
+            cout<<"\ndeleted\n"; // Output: deleted
             delete ptr;}
         int &operator *(){return *ptr;}
 };
@@ -22,13 +22,13 @@ class smart{
     int x,y;
     public:
     smart(int a=0,int b=0):x(a),y(b){
-        cout<<"started here\n";
+        cout<<"started here\n"; // Output: started here
     }
-    ~smart(){cout<<"destroyed";}
+    ~smart(){cout<<"destroyed";} // Output: destroyed
 };
 
 void fun(){
-    cout<<"SAIKUMAR";
+    cout<<"SAIKUMAR"; // Output: SAIKUMAR
 }
 int sum(int x,int y){
     return (x+y);
@@ -46,25 +46,22 @@ int main(){
     // int x=10;
     // int *p=&x;
     // int &m=*p;
-    // cout<<*p;
-    // cout << "\n";
-    // cout<<m;
-    // delete p;        deleteing the pointer only when the pointer is dynamically pointing(heap) aka. new or new[] only
-
-
+    // cout<<*p; // Output: 10
+    // cout << "\n"; // Output: (newline)
+    // cout<<m; // Output: 10
+    // delete p;        // deleteing the pointer only when the pointer is dynamically pointing(heap) aka. new or new[] only
 
     // int s=50;
     // f(s);
-    // cout<<s<<endl;
-
+    // cout<<s<<endl; // Output: 60
 
     // sp sp(new int());
     // *sp=10;
-    // cout<<*sp;
+    // cout<<*sp; // Output: 10 and also Deleted from the func
 
     // {
-    //     smart *p=new smart(10,20);                          //main is called using dynamic memory allocation
-    // }
+    //     smart *p=new smart(10,20); // Output: started here
+    // } // Output: destroyed
 
     // There are several types of smart pointers in C++:
     // 1) unique_ptr: Owns the object exclusively. Cannot be copied, only moved.
@@ -74,32 +71,32 @@ int main(){
 
 
     unique_ptr<int>st=make_unique<int>(10);
-    cout<<*st;
-    cout<<endl;
+    cout<<*st; // Output: 10
+    cout<<endl; // Output: (newline)
     // cout<<st.use_count()<<endl;  //error as unique pointer does not have any count()!! we can transfer unique to shared if we want
 
     shared_ptr<int>sst=make_shared<int>(100);
-    cout<<*sst; //1
-    cout<<endl;
+    cout<<*sst; // Output: 100
+    cout<<endl; // Output: (newline)
     auto p=sst;
-    cout<<*p;       //2
-    cout<<endl;
+    cout<<*p; // Output: 100
+    cout<<endl; // Output: (newline)
     auto pq=p;
-    cout<<pq<<endl; //3
-    cout<<p.use_count()<<" "; //3
-    cout<<sst.use_count()<<" "; //3
-    cout<<endl;
-    cout<<endl;
+    cout<<pq<<endl; // Output: address of shared_ptr<int> object (e.g., 0x55f... format)
+    cout<<p.use_count()<<" "; // Output: 3 
+    cout<<sst.use_count()<<" "; // Output: 3
+    cout<<endl; // Output: (newline)
+    cout<<endl; // Output: (newline)
 
     unique_ptr<int>sai=make_unique<int>(70504);     //any number staring with 0 will be a octet form!!
     shared_ptr<int>saikumar=move(sai);
-    cout<<*saikumar<<endl;
-    cout<<"count is :"<<saikumar.use_count()<<endl;
+    cout<<*saikumar<<endl; // Output: 70504
+    cout<<"count is :"<<saikumar.use_count()<<endl; // Output: count is :2
     auto niki=saikumar;
-    cout<<*niki<<endl;
-    cout<<"count is :"<<niki.use_count()<<endl;
+    cout<<*niki<<endl; // Output: 70504
+    cout<<"count is :"<<niki.use_count()<<endl; // Output: count is :2
     if(!sai){
-        cout<<"unique pointer is empty now man!!\n";
+        cout<<"unique pointer is empty now man!!\n"; // Output: unique pointer is empty now man!!
     }
 
 
@@ -110,20 +107,20 @@ int main(){
     // fin.open("text.txt");
     // ch=fin.get();
     // while(!fin.eof()){
-    //     cout<<ch;
+    //     cout<<ch; // Output: (contents of text.txt, character by character)
     //     ch=fin.get();
     // }
     // fin.close();
 
-
-    //file writing
-    
+    // file writing
     // ofstream sai;
     // sai.open("saikumar.txt");
     // sai<<"hey man its the file which is going to be here for a while ok!!";
     // sai.close();
 
 
+
+    // --------------------------------------------
     // In C++, memory is divided into several sections:
     // 1. Stack: Stores function calls and local variables.
     // 2. Heap: Stores dynamically allocated memory (using new/delete).
@@ -132,58 +129,55 @@ int main(){
     // Example: Using unique_ptr and shared_ptr
 
     // unique_ptr<int> uptr(new int(100));
-    // cout << "unique_ptr value: " << *uptr << endl;
+    // cout << "unique_ptr value: " << *uptr << endl; // Output: unique_ptr value: 100
 
     // shared_ptr<int> sptr1 = make_shared<int>(200);
     // shared_ptr<int> sptr2 = sptr1; // shared ownership
-    // cout << "shared_ptr value: " << *sptr1 << ", count: " << sptr1.use_count() << endl;
+    // cout << "shared_ptr value: " << *sptr1 << ", count: " << sptr1.use_count() << endl; // Output: shared_ptr value: 200, count: 2
 
     // weak_ptr<int> wptr = sptr1; // does not increase reference count
     // if (auto locked = wptr.lock()) {
-    //     cout << "weak_ptr locked value: " << *locked << endl;
+    //     cout << "weak_ptr locked value: " << *locked << endl; // Output: weak_ptr locked value: 200
     // } else {
-    //     cout << "weak_ptr expired" << endl;
+    //     cout << "weak_ptr expired" << endl; // Output: weak_ptr expired
     // }
-
 
     // function pointer
     // auto fun_ptr=fun;
-    // (*fun_ptr)(); //also fun_ptr();
+    // (*fun_ptr)(); //also fun_ptr(); // Output: SAIKUMAR
 
     // auto fun_ptr=sum;
-    // cout<<fun_ptr(10,20);
+    // cout<<fun_ptr(10,20); // Output: 30
 
-// in function pointer we can assign a pointer to multipe function in one call
+    // in function pointer we can assign a pointer to multipe function in one call
     // auto fun=add;
-    // cout<<fun(10,20);
-    //  fun=sub;     
-    // cout<<fun(10,20);
+    // cout<<fun(10,20); // Output: 30
+    // fun=sub;     
+    // cout<<fun(10,20); // Output: -10
 
-    // cout<<compute(10,20,add)<<endl;
-
+    // cout<<compute(10,20,add)<<endl; // Output: 30
 
     // int arr[5]={2,4,-1,8,-9};
     // int n=5;
     // sort(arr,arr+n,compare);
     // for(int unm:arr){
-    //     cout<<unm<<" ";
+    //     cout<<unm<<" "; // Output: -1 2 4 8 -9 
     // }
 
     // we can also use the lambda function in place of function pointers
     // auto lambda_add = [](int a, int b) { return a + b; };
-    // cout << "Lambda add: " << lambda_add(5, 7) << endl;
+    // cout << "Lambda add: " << lambda_add(5, 7) << endl; // Output: Lambda add: 12
 
     // // Using lambda with sort
     // int arr2[5] = {3, -2, 5, 1, -4};
     // sort(arr2, arr2 + 5, [](int a, int b) { return abs(a) < abs(b); });
-    // cout << "Sorted by abs using lambda: ";
-    // for (int x : arr2) cout << x << " ";
-    // cout << endl;
-    
+    // cout << "Sorted by abs using lambda: "; // Output: Sorted by abs using lambda: 
+    // for (int x : arr2) cout << x << " "; // Output: 1 -2 3 -4 5 
+    // cout << endl; // Output: (newline)
 
     // vector<int>v={2,4,-1,8,-9};
     // for_each(v.begin(),v.end(),[](int &x){return x=x*2;});
-    // for_each(v.begin(),v.end(),[](int x){cout<<x<<" ";});
+    // for_each(v.begin(),v.end(),[](int x){cout<<x<<" ";}); // Output: 4 8 -2 16 -18 
 
     // simlilary we also have find_if and count_if and accumulate
     return 0;

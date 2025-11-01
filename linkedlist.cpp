@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+// to acces the element from the last n-end we can take a loop from start where a>=k+1(gives the last kth element)
+//local maxium means the either side the curr is greather than them and local minimum means the current element is smaller than either side of elements
 // struct node{
 //     int data;
 //     node* next;
@@ -701,6 +702,63 @@ node* flateenLLbysorthing(node* head){
         return merge(head,mergehead);    
 }
 
+
+   
+node* removeNthFromEnd(node* head, int n) {
+        if (head->next == NULL) {
+            return NULL;
+        }
+        
+        node* slow = head;
+        node* fast = head;
+        
+        while (n > 0) {
+            fast = fast->next;
+            n--;
+        }
+        
+        if (fast == NULL) {
+            return head->next;
+        }
+        
+        while (fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        
+        slow->next = slow->next->next;
+        return head;
+    }
+
+
+
+//  node* flatten(node* head) {
+//         if(head==NULL)return head;
+//         node* curr=head;
+//         while(curr!=NULL){
+//             if(curr->child!=nullptr){
+//                 //flatten child node
+//                 node* next=curr->next;
+//                 curr->next=flatten(curr->child);
+//                 curr->next->prev=curr;
+//                 curr->child=NULL;
+
+//                 //find tail
+//                 while(curr->next!=nullptr){
+//                     curr=curr->next;
+//                 }
+
+//                 //attach the tail to next
+//                 if(next!=NULL){
+//                     curr->next=next;
+//                     next->prev=curr;
+//                 }
+//             }
+//             curr=curr->next;
+//         }return head;
+//     }
+    
+
 /// doubely linked list
 class dnode{
 public: // <-- add this line
@@ -915,32 +973,6 @@ class circularlist{
 };
 
 
-//  node* flatten(node* head) {
-//         if(head==NULL)return head;
-//         node* curr=head;
-//         while(curr!=NULL){
-//             if(curr->child!=nullptr){
-//                 //flatten child node
-//                 node* next=curr->next;
-//                 curr->next=flatten(curr->child);
-//                 curr->next->prev=curr;
-//                 curr->child=NULL;
-
-//                 //find tail
-//                 while(curr->next!=nullptr){
-//                     curr=curr->next;
-//                 }
-
-//                 //attach the tail to next
-//                 if(next!=NULL){
-//                     curr->next=next;
-//                     next->prev=curr;
-//                 }
-//             }
-//             curr=curr->next;
-//         }return head;
-//     }
-    
     int main(){
     // int tc=0;
     // int* y=&tc;
@@ -1031,20 +1063,20 @@ class circularlist{
 
 
 ////////////////////////-----------------doubely linked list
-         doublylist dll;
-         dll.push_front(20);
-         dll.push_front(10);
-         dll.push_front(30);
-         dll.printfro();
-         dll.push_back(50);
-         dll.printfro();
-         dll.pop_front();
-         dll.printfro();
-         dll.pop_back();
-         dll.printfro();
-         dll.printback();
-         dll.push_at(30,3);
-         dll.printfro();
+        //  doublylist dll;
+        //  dll.push_front(20);
+        //  dll.push_front(10);
+        //  dll.push_front(30);
+        //  dll.printfro();
+        //  dll.push_back(50);
+        //  dll.printfro();
+        //  dll.pop_front();
+        //  dll.printfro();
+        //  dll.pop_back();
+        //  dll.printfro();
+        //  dll.printback();
+        //  dll.push_at(30,3);
+        //  dll.printfro();
 
 
 //--------------circular list--------------

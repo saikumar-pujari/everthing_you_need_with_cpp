@@ -264,9 +264,24 @@ int main(){
 //     auto it = ++fl.begin();
 //     cout << it->x << " " << it->y; // Expected output: 3 4
 
-vector<int>ls;
-ls.push_back(10);
-cout<<ls[0]; // Expected output: 10
+// vector<int>ls;
+// ls.push_back(10);
+// cout<<ls[0]; // Expected output: 10
+
+
+
+// -------------------------------------------------------------------------deque
+// it provides the functioality of both stack and queue
+// in deque you can delete from any side
+//deque is doubely linked list
+// deque<int>dq={10,20,30};
+// dq.push_front(1);
+// dq.push_back(255);
+// for(int num:dq){
+//     cout<<num<<" ";   //output:- 1 10 20 30 255
+// }cout << "\n";
+// cout<<dq.front()<<" "<<dq.back()<<endl;  //output:- 1  255
+
 
 return 0;
 }

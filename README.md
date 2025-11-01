@@ -27,6 +27,7 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 9. **STL**
 10. **Pairs**
 11. **Vectors, Lists, Deque**
+12. **Stacks and Queues**
 
 ---
 
