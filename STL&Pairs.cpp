@@ -56,7 +56,7 @@ int main(){
     cout<<p2.first<<" "<<p2.second;  //10 saikumar
     cout<<endl;
 
-    //by jusing pointer we need to use this pointer method as dot not works in pointers!!
+    //by using pointer we need to use this pointer method as dot not works in pointers!!
     pair<int, string> *pr= new pair<int, string>(10, "geeks");
     cout << pr->first << ": " << pr->second; //10 geeks
 

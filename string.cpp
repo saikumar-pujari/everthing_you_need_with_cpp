@@ -5,14 +5,14 @@ int main(){
     // string starts drom 65-90 and small from 97-122
     // char s[]="gfg",s2[]={'g','g','g'};
     // cout<<strlen(s)<<endl; // Example: 3.
-    // cout<<strcmp(s,s2)<<endl;  //only give s 0,1,-1 // Example: 0
+    // cout<<strcmp(s,s2)<<endl;  //only give s 0,1,-1 // Example: -1
     // int res=strcmp(s,s2);
     // if(res>0){
     //     cout<<"s is greater"; // Example: s is greater
     // }else if(res==0){
     //     cout<<"equal"; // Example: equal
     // }else{
-    //     cout<<"s2 is bigger"; // Example: s2 is bigger
+    //     cout<<"s2 is bigger"; // Example: s2 is bigger(actual output)
     // }
 
     // char str[3];

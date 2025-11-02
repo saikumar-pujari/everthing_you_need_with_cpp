@@ -47,8 +47,8 @@ int main(){
 
     // int x=10;
     // int y=10;
-    // func(x);
-    // funcd(&y);
+    // func(x);     //uses the reference method
+    // funcd(&y);       //uses the pointer method
     // cout<<x<<endl; // 20
     // cout<<y; // 30
     // cout<<endl;
@@ -57,6 +57,7 @@ int main(){
     // asd(s); // saikumar
 
     //in fun called by a array always asign the size with the array so that in fun it should not be treated as a pointer
+    // When you pass an array to a function, it automatically decays into a pointer to its first element.
     // int arr[]={10,20,30,40,50};
     // cout<<(arr)<<endl; // (address of arr, e.g. 0x7ffee4b8c880)
     // cout<<(arr+1)<<endl; // (address of arr[1], e.g. 0x7ffee4b8c884)
@@ -70,8 +71,9 @@ int main(){
     // cout<<ptr[2]; // 40 cuz the pointer points at 20 now
 
     // int arr[]={10,20,30,40};
-    // int *p1=arr;
-    // int (*p2)[4]=&arr;  //here the 4 represent the size of block if i do a p2++ then i t will increment in a way that increase it's value by 4
+    // int *p1=arr; //10
+    //arr is a reference to an array of N integers(int(&arr)[N])
+    // int (*p2)[4]=&arr;
     // cout<<*p1<<endl; // 10
     // cout<<**p2<<endl; // 10
     // p2++;
@@ -86,7 +88,8 @@ int main(){
 
     // ITS ALWAYS RECOMMENED TO USE NULLPTR IN PLACE OF NULL AS NULL I SCONSIDERED AS 0 IN CPP
 
-    // funcx(NULL); // ambisoius call in the funcx
+    // funcx(NULL); // ambisoius call in the funcx,can be fixed by using nullptr instead of NULL or #define NULL 0
+                    //in this error the func gets confused to call which func man cuz all have same name and parameter!
 
     // int arr[]={10,20,30,40};
     // int *ptr=arr;
@@ -97,7 +100,7 @@ int main(){
 
     // int *ptr=nullptr; //nulllptr is equal to 0 which is false
     // if(!ptr){
-    //     cout<<"its a null pointer"; // its a null pointer
+    //     cout<<"its a null pointer"; // its a null pointer(it prints a output)
     // }
 
     // Dynamic memory allocator
@@ -113,7 +116,7 @@ int main(){
     // cout<<endl;
     
     // int arr[] = { 4, 5, 6, 7 };
-    // int* p = (arr + 1);
+    // int* p = (arr + 1);      //5
     // cout << *arr + 10;  // 14
     // cout<<endl;
     // cout<<*p; // 5

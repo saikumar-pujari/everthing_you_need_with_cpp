@@ -45,7 +45,7 @@ bool compare(int c,int d){return abs(c)<abs(d);}
 int main(){
     // int x=10;
     // int *p=&x;
-    // int &m=*p;
+    // int &m=*p;   //when pointing its not storing the address it simpily refers another name to directly to x
     // cout<<*p; // Output: 10
     // cout << "\n"; // Output: (newline)
     // cout<<m; // Output: 10
@@ -86,7 +86,6 @@ int main(){
     cout<<p.use_count()<<" "; // Output: 3 
     cout<<sst.use_count()<<" "; // Output: 3
     cout<<endl; // Output: (newline)
-    cout<<endl; // Output: (newline)
 
     unique_ptr<int>sai=make_unique<int>(70504);     //any number staring with 0 will be a octet form!!
     shared_ptr<int>saikumar=move(sai);
@@ -102,21 +101,21 @@ int main(){
 
     // --------------------------------------------------
     // file reading
-    // char ch;
-    // ifstream fin;
-    // fin.open("text.txt");
-    // ch=fin.get();
-    // while(!fin.eof()){
-    //     cout<<ch; // Output: (contents of text.txt, character by character)
-    //     ch=fin.get();
-    // }
-    // fin.close();
+    char ch;
+    ifstream fin;
+    fin.open("text.txt");
+    ch=fin.get();
+    while(!fin.eof()){
+        cout<<ch; // Output: (contents of text.txt, character by character)
+        ch=fin.get();
+    }
+    fin.close();
 
     // file writing
-    // ofstream sai;
-    // sai.open("saikumar.txt");
-    // sai<<"hey man its the file which is going to be here for a while ok!!";
-    // sai.close();
+    ofstream sais;
+    sais.open("saikumar.txt");
+    sais<<"hey man its the file which is going to be here for a while ok!!";
+    sais.close();
 
 
 
@@ -128,56 +127,60 @@ int main(){
     // 4. Text segment: Stores executable code (instructions) also function pointers.
     // Example: Using unique_ptr and shared_ptr
 
-    // unique_ptr<int> uptr(new int(100));
-    // cout << "unique_ptr value: " << *uptr << endl; // Output: unique_ptr value: 100
+    unique_ptr<int> uptr(new int(100));
+    cout << "unique_ptr value: " << *uptr << endl; // Output: unique_ptr value: 100
 
-    // shared_ptr<int> sptr1 = make_shared<int>(200);
-    // shared_ptr<int> sptr2 = sptr1; // shared ownership
-    // cout << "shared_ptr value: " << *sptr1 << ", count: " << sptr1.use_count() << endl; // Output: shared_ptr value: 200, count: 2
+    shared_ptr<int> sptr1 = make_shared<int>(200);
+    shared_ptr<int> sptr2 = sptr1; // shared ownership
+    cout << "shared_ptr value: " << *sptr1 << ", count: " << sptr1.use_count() << endl; // Output: shared_ptr value: 200, count: 2
 
-    // weak_ptr<int> wptr = sptr1; // does not increase reference count
-    // if (auto locked = wptr.lock()) {
-    //     cout << "weak_ptr locked value: " << *locked << endl; // Output: weak_ptr locked value: 200
-    // } else {
-    //     cout << "weak_ptr expired" << endl; // Output: weak_ptr expired
-    // }
+    weak_ptr<int> wptr = sptr1; // does not increase reference count
+    if (auto locked = wptr.lock()) {
+        cout << "weak_ptr locked value: " << *locked << endl; // Output: weak_ptr locked value: 200
+    } else {
+        cout << "weak_ptr expired" << endl; // Output: weak_ptr expired
+    }
 
-    // function pointer
-    // auto fun_ptr=fun;
-    // (*fun_ptr)(); //also fun_ptr(); // Output: SAIKUMAR
+    // ----------------------function pointer--------------------------
+    auto fun_ptr=fun;
+    (*fun_ptr)(); //also fun_ptr(); // Output: SAIKUMAR
 
-    // auto fun_ptr=sum;
-    // cout<<fun_ptr(10,20); // Output: 30
+    auto sum_ptr=sum;
+    cout<<sum_ptr(10,20); // Output: 30
 
     // in function pointer we can assign a pointer to multipe function in one call
-    // auto fun=add;
-    // cout<<fun(10,20); // Output: 30
-    // fun=sub;     
-    // cout<<fun(10,20); // Output: -10
+    auto fun=add;
+    cout<<fun(10,20); // Output: 30
+    fun=sub;     
+    cout<<fun(10,20); // Output: -10
 
-    // cout<<compute(10,20,add)<<endl; // Output: 30
+    cout<<compute(10,20,add)<<endl; // Output: 30
 
-    // int arr[5]={2,4,-1,8,-9};
-    // int n=5;
-    // sort(arr,arr+n,compare);
-    // for(int unm:arr){
-    //     cout<<unm<<" "; // Output: -1 2 4 8 -9 
-    // }
+    int arr[5]={2,4,-1,8,-9};
+    int n=5;
+    sort(arr,arr+n,compare);
+    for(int num:arr){
+        cout<<num<<" "; // Output: -1 2 4 8 -9 
+    }
 
     // we can also use the lambda function in place of function pointers
-    // auto lambda_add = [](int a, int b) { return a + b; };
-    // cout << "Lambda add: " << lambda_add(5, 7) << endl; // Output: Lambda add: 12
+    auto lambda_add = [](int a, int b) { return a + b; };
+    cout << "Lambda add: " << lambda_add(5, 7) << endl; // Output: Lambda add: 12
 
     // // Using lambda with sort
-    // int arr2[5] = {3, -2, 5, 1, -4};
-    // sort(arr2, arr2 + 5, [](int a, int b) { return abs(a) < abs(b); });
-    // cout << "Sorted by abs using lambda: "; // Output: Sorted by abs using lambda: 
-    // for (int x : arr2) cout << x << " "; // Output: 1 -2 3 -4 5 
-    // cout << endl; // Output: (newline)
+    int arr2[5] = {3, -2, 5, 1, -4};
+    sort(arr2, arr2 + 5, [](int a, int b) { return abs(a) < abs(b); });
+    cout << "Sorted by abs using lambda: "; // Output: Sorted by abs using lambda: 
+    for (int x : arr2) cout << x << " "; // Output: 1 -2 3 -4 5 
+    cout << endl; // Output: (newline)
 
-    // vector<int>v={2,4,-1,8,-9};
-    // for_each(v.begin(),v.end(),[](int &x){return x=x*2;});
-    // for_each(v.begin(),v.end(),[](int x){cout<<x<<" ";}); // Output: 4 8 -2 16 -18 
+    vector<int>v={2,4,-1,8,-9};
+    for_each(v.begin(),v.end(),[](int x){return x=x*2;});
+    //the above fun would not return anything cuz it creates the temp copy which is not excuted cuz its not send via by refernce then by a value
+    for_each(v.begin(),v.end(),[](int &x){return x=x*2;});
+    for_each(v.begin(),v.end(),[](int x){cout<<x<<" ";}); // Output: 4 8 -2 16 -18 
+    auto it = find_if(v.begin(), v.end(), [](int x){ return x < 0; });
+    int negCount = count_if(v.begin(), v.end(), [](int x){ return x < 0; });
 
     // simlilary we also have find_if and count_if and accumulate
     return 0;

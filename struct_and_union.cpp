@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 struct points{
     int x;
     string y;
@@ -8,10 +9,13 @@ typedef struct {                    //typedef is used in old c++ compilers now t
         int x;
         int y;
     }pd;
-    struct sai{
+
+struct sai{
         int x;
     };
-    struct derived:sai{};
+struct derived:sai{};
+
+
 class point{
     // public:
     int x;
@@ -45,7 +49,19 @@ struct s1 {
     double d2; //8 ()
     char c1; //8 ()
     char c2; //8 ()
-} ;
+};
+
+
+// union is similar to struct but it assign its largest value to all of elements (mostly used in compiler in my project of compilers)
+    union saiku{
+        public:
+        int x;
+        private:
+        string y;
+        protected:
+        float z;
+    };
+
 int main(){
     // struct is user defined and public 
     // points p;
@@ -61,7 +77,7 @@ int main(){
 
     // class is similar to struct but these have private members in them so if we call them we will get a compiler error
     // point p;
-    // p.x=0;
+    // p.x=0;       //now its commented as its also used for other example plz uncomment it on line 20 i guess ;)
     // cout<<p.x; //it will give a error as private here
 
     //  point p;
@@ -80,8 +96,8 @@ int main(){
 
     // saikumar p={10,20};
     // saikumar *ptr=&p;
-    // cout<<ptr->x<<endl;                  //its struct as a pointer
-    // Expected output: 10
+    // cout<<ptr->x<<endl;          //its struct as a pointer__Expected output: 10
+    
     // ptr->x=100;
     // cout<<ptr->x<<endl;  //in pointer the dot is not used when comparing it uses the -> method!!
     // Expected output: 100
