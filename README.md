@@ -21,13 +21,16 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 3. **Pointers & Reference**
 4. **String**
 5. **Structure and Union**
-6. **Multi-dimension Array and Templates**
+6. ** Templates**
 7. **OOPS**
 8. **Smart Pointers and File Handling**
 9. **STL**
 10. **Pairs**
 11. **Vectors, Lists, Deque**
-12. **Stacks and Queues**
+12. **Stacks ,Queues and priority queues**
+13. **sets and maps**
+14. **linked list,linked_list and custom_browser_history**
+
 
 ---
 
