@@ -6,6 +6,31 @@ int main(){
     // It provides commonly used data structures and algorithms.
     // Examples: vector, list, map, set, stack, queue, etc.
 
+    //stl is mainly divided into 4 pillars
+    //containers, algorithms,iterators,functors
+
+
+
+    //iterators are used to point towards the memory location of containers like vector,set,map etc.,eg: begin(),end(),next(),prev() or dereference operator(*it)
+
+    //functors are objects that can be treated as functions or function pointers.eg: greater<int>(priority_min),less<int>(priority_max) etc.,
+
+    //algorithms are used to perform operations on data structures like sorting, searching, etc.,eg: sort(),binary_search(),reverse(),max_element(),min_element() etc.,
+
+    //containers are used to store data.eg: vector,list,set,map,stack,queue etc.,
+    //|____there are 4 types of containers: sequence containers(vector,deque,list,forward_list,array), associative containers(set,map), unordered associative containers(unordered_set,unordered_map), and container adapters(stack,queue,priority_queue).
+
+    // Container vs Adaptor Comparison:----->container not equal to adaptor
+    // ┌─────────────┬────────────────────────────┬──────────────────┬──────────────────────────────┐
+    // │ Type        │ Access                     │ Can Iterate?     │ Example Functions            │
+    // ├─────────────┼────────────────────────────┼──────────────────┼──────────────────────────────┤
+    // │ Container   │ Full (direct & elements)   │ ✅ Yes           │ begin(), end(), find(),      │
+    // │             │                            │                  │ erase(), insert()            │
+    // ├─────────────┼────────────────────────────┼──────────────────┼──────────────────────────────┤
+    // │ Adaptor     │ Restricted (top/front/back)│ ❌ No            │ push(), pop(), top(),        │
+    // │             │                            │                  │ front(), back()              │
+    // └─────────────┴────────────────────────────┴──────────────────┴──────────────────────────────┘
+
     // Example usage of vector (dynamic array)
     vector<int> v = {1, 2, 3, 4, 5};
     cout << "Vector elements: ";
