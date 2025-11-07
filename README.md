@@ -30,6 +30,7 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 12. **Stacks ,Queues and priority queues**
 13. **sets and maps**
 14. **linked list,linked_list and custom_browser_history**
+15. **mutating and non_mutating**
 
 
 ---
