@@ -56,6 +56,29 @@ int main(){
     // string s="saikumar";
     // asd(s); // saikumar
 
+    //reference
+    // int a=10;
+    // int& g=a;
+    // g++;
+    // cout<<a<<" "<<g<<endl;    //both are refering to same address so increment of the g will effect the a also!
+
+    // int* p=nullptr;
+    // cout<<*p;
+
+    //SWAP USING THE POINTERS
+    // void swap(int* a, int* b) {
+    // int temp = *a;
+    // *a = *b;
+    // *b = temp;
+    // }
+
+    //SWAP USING REFERENCE
+    // void swap(int& a, int& b) {
+    // int temp = a;
+    // a = b;
+    // b = temp;
+    // }
+
     //in fun called by a array always asign the size with the array so that in fun it should not be treated as a pointer
     // When you pass an array to a function, it automatically decays into a pointer to its first element.
     // int arr[]={10,20,30,40,50};
@@ -120,6 +143,16 @@ int main(){
     // cout << *arr + 10;  // 14
     // cout<<endl;
     // cout<<*p; // 5
+
+    //DYNAMIC ARRAYS USING POINTER TO RESIZE
+    // int* newArr = new int[newSize];
+    // for (int i = 0; i < size; ++i)
+    //     newArr[i] = arr[i];
+    // for (int i = size; i < newSize; ++i)
+    //     newArr[i] = 0; // fill default
+    // delete[] arr;
+    // arr = newArr;
+    // size = newSize;
 
     return 0;
 }

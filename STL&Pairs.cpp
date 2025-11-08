@@ -31,6 +31,17 @@ int main(){
     // │             │                            │                  │ front(), back()              │
     // └─────────────┴────────────────────────────┴──────────────────┴──────────────────────────────┘
 
+    //count && .at() && find can be used in vector,sets,maps
+    //erase except stacks,queus,priority_queues cant be used in adapters
+    //.erase can be used in vector,deque,sets,map,list,forward_list
+
+
+    //      Category	Examples	Description
+    // 1️⃣ Sequence Containers	vector, deque, list, forward_list, array	Store elements in a linear order (like an array)
+    // 2️⃣ Associative Containers	set, multiset, map, multimap	Store elements in a sorted (key-based) structure
+    // 3️⃣ Unordered Containers	unordered_set, unordered_map, unordered_multiset, unordered_multimap	Store elements using hashing (no order)
+
+
     // Example usage of vector (dynamic array)
     vector<int> v = {1, 2, 3, 4, 5};
     cout << "Vector elements: ";
@@ -40,9 +51,9 @@ int main(){
     cout << endl; // Output: Vector elements: 1 2 3 4 5 
 
     // Example usage of set (unique sorted elements)
-    set<int> s = {5, 3, 1, 4, 2};
+    set<int> s_set = {5, 3, 1, 4, 2};
     cout << "Set elements: ";
-    for (int x : s) {
+    for (int x : s_set) {
         cout << x << " ";
     }
     cout << endl; // Output: Set elements: 1 2 3 4 5 
@@ -73,19 +84,36 @@ int main(){
     i = next(i);           // points to next element
     cout << "Back to last element pointed by iterator: " << *i << endl; // Output: 5
 
-     // pairs are use to store two or more items of same or fiifernet types
+    // pairs are use to store two or more items of same or different types
     pair<int,int>p1={10,20};
     cout<<p1.first<<" "<<p1.second<<endl; //10  20
     pair<int,string>p2;
     p2=make_pair(10,"saikumar");
-    cout<<p2.first<<" "<<p2.second;  //10 saikumar
-    cout<<endl;
+    cout<<p2.first<<" "<<p2.second<<endl;  //10 saikumar
 
     //by using pointer we need to use this pointer method as dot not works in pointers!!
     pair<int, string> *pr= new pair<int, string>(10, "geeks");
-    cout << pr->first << ": " << pr->second; //10 geeks
+    cout << pr->first << ": " << pr->second << endl; //10 geeks
 
     pair<int, int> ps = make_pair(10, 'A');
-    cout << ps.first << endl << ps.second;   // 10 65(asic value)
+    cout << ps.first << endl << ps.second << endl;   // 10 65(ascii value)
+
+    //tuple
+  tuple<int,string,float>s(1,"sai",90.45);
+  tuple<int,string,float>s2(1,"sai",90.45);
+  cout<<get<0>(s)<<endl;
+  cout<<get<1>(s)<<endl;
+  get<1>(s)="saikumar";
+  cout<<get<1>(s)<<endl;
+  cout<<get<2>(s)<<endl;    
+
+    float num;
+    int roll;
+    string name;
+    tie(roll,name,num)=s;
+    cout<<roll<<" "<<name<<" "<<num<<endl;
+    
+    auto combined=tuple_cat(s,s2);
+    cout << get<0>(combined) << ", " << get<1>(combined)<< ", " << get<2>(combined) << ", " << get<3>(combined) << endl;
     return 0;
 }
