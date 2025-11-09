@@ -1,8 +1,184 @@
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <queue>
 #include <stack>
+#include <algorithm>
 using namespace std;
+
+// ============================================================================
+// CUSTOM IMPLEMENTATIONS - Stack with Vector
+// ============================================================================
+
+class MyStackVector {
+private:
+    vector<int> data;
+    
+public:
+    void push(int x) {
+        data.push_back(x);  // O(1) - add to end
+    }
+    
+    void pop() {
+        if (!data.empty()) {
+            data.pop_back();  // O(1) - remove from end
+        }
+    }
+    
+    int top() {
+        return data.back();
+    }
+    
+    bool empty() {
+        return data.empty();
+    }
+    
+    int size() {
+        return data.size();
+    }
+};
+
+// ============================================================================
+// CUSTOM IMPLEMENTATIONS - Stack with Deque
+// ============================================================================
+
+class MyStackDeque {
+private:
+    deque<int> data;
+    
+public:
+    void push(int x) {
+        data.push_back(x);  // O(1) - add to end
+    }
+    
+    void pop() {
+        if (!data.empty()) {
+            data.pop_back();  // O(1) - remove from end
+        }
+    }
+    
+    int top() {
+        return data.back();
+    }
+    
+    bool empty() {
+        return data.empty();
+    }
+    
+    int size() {
+        return data.size();
+    }
+};
+
+// ============================================================================
+// CUSTOM IMPLEMENTATIONS - Queue with Deque
+// ============================================================================
+
+class MyQueueDeque {
+private:
+    deque<int> data;
+    
+public:
+    void push(int x) {
+        data.push_back(x);  // O(1) - add to back
+    }
+    
+    void pop() {
+        if (!data.empty()) {
+            data.pop_front();  // O(1) - remove from front
+        }
+    }
+    
+    int front() {
+        return data.front();
+    }
+    
+    int back() {
+        return data.back();
+    }
+    
+    bool empty() {
+        return data.empty();
+    }
+    
+    int size() {
+        return data.size();
+    }
+};
+
+// ============================================================================
+// CUSTOM IMPLEMENTATIONS - Priority Queue with Vector (Max Heap)
+// ============================================================================
+
+class MyPriorityQueueVector {
+private:
+    vector<int> data;
+    
+    // Helper: Move element up (for insertion)
+    void bubbleUp(int index) {
+        while (index > 0) {
+            int parent = (index - 1) / 2;
+            if (data[index] > data[parent]) {
+                swap(data[index], data[parent]);
+                index = parent;
+            } else {
+                break;
+            }
+        }
+    }
+    
+    // Helper: Move element down (for deletion)
+    void bubbleDown(int index) {
+        int size = data.size();
+        while (true) {
+            int largest = index;
+            int left = 2 * index + 1;
+            int right = 2 * index + 2;
+            
+            if (left < size && data[left] > data[largest]) {
+                largest = left;
+            }
+            if (right < size && data[right] > data[largest]) {
+                largest = right;
+            }
+            
+            if (largest != index) {
+                swap(data[index], data[largest]);
+                index = largest;
+            } else {
+                break;
+            }
+        }
+    }
+    
+public:
+    void push(int x) {
+        data.push_back(x);
+        bubbleUp(data.size() - 1);  // O(log n)
+    }
+    
+    void pop() {
+        if (!data.empty()) {
+            data[0] = data.back();
+            data.pop_back();
+            if (!data.empty()) {
+                bubbleDown(0);  // O(log n)
+            }
+        }
+    }
+    
+    int top() {
+        return data[0];
+    }
+    
+    bool empty() {
+        return data.empty();
+    }
+    
+    int size() {
+        return data.size();
+    }
+};
 
 // ============================================================================
 // WRAPPERS THAT HIDE OTHER CONTAINERS & ITERATIONS
@@ -73,6 +249,50 @@ int main() {
     cout << "❌ You CAN'T iterate, CAN'T access middle, CAN'T modify\n\n";
 
     // ============================================================================
+    // EXAMPLE 1A: CUSTOM STACK WITH VECTOR
+    // ============================================================================
+
+    cout << "\n--- CUSTOM STACK WITH VECTOR ---\n";
+    cout << "MyStackVector uses vector internally:\n";
+    cout << "push(x) → data.push_back(x)\n";
+    cout << "pop()   → data.pop_back()\n";
+    cout << "top()   → data.back()\n\n";
+    
+    MyStackVector stackVec;
+    stackVec.push(10);
+    stackVec.push(20);
+    stackVec.push(30);
+    cout << "Pushed 10, 20, 30\n";
+    cout << "Size: " << stackVec.size() << "\n";
+    cout << "Top: " << stackVec.top() << "\n";
+    stackVec.pop();
+    cout << "After pop, Top: " << stackVec.top() << " (Size: " << stackVec.size() << ")\n";
+    cout << "✅ Vector-based stack works!\n\n";
+
+    // ============================================================================
+    // EXAMPLE 1B: CUSTOM STACK WITH DEQUE
+    // ============================================================================
+
+    cout << "\n--- CUSTOM STACK WITH DEQUE ---\n";
+    cout << "MyStackDeque uses deque internally:\n";
+    cout << "push(x) → data.push_back(x)\n";
+    cout << "pop()   → data.pop_back()\n";
+    cout << "top()   → data.back()\n\n";
+    
+    MyStackDeque stackDeque;
+    stackDeque.push(100);
+    stackDeque.push(200);
+    stackDeque.push(300);
+    cout << "Pushed 100, 200, 300\n";
+    cout << "Size: " << stackDeque.size() << "\n";
+    cout << "Top: " << stackDeque.top() << "\n";
+    stackDeque.pop();
+    cout << "After pop, Top: " << stackDeque.top() << " (Size: " << stackDeque.size() << ")\n";
+    cout << "✅ Deque-based stack works!\n\n";
+
+    cout << "📌 Both Vector and Deque give O(1) for push/pop at end!\n\n";
+
+    // ============================================================================
     // EXAMPLE 2: QUEUE - Wrapper around Deque
     // ============================================================================
 
@@ -104,6 +324,30 @@ int main() {
     cout << "❌ You CAN'T iterate, CAN'T access middle\n\n";
 
     // ============================================================================
+    // EXAMPLE 2A: CUSTOM QUEUE WITH DEQUE
+    // ============================================================================
+
+    cout << "\n--- CUSTOM QUEUE WITH DEQUE ---\n";
+    cout << "MyQueueDeque uses deque internally:\n";
+    cout << "push(x) → data.push_back(x)  (add to BACK)\n";
+    cout << "pop()   → data.pop_front()   (remove from FRONT)\n";
+    cout << "front() → data.front()\n\n";
+    
+    MyQueueDeque queueDeque;
+    queueDeque.push(5);
+    queueDeque.push(10);
+    queueDeque.push(15);
+    queueDeque.push(20);
+    cout << "Pushed 5, 10, 15, 20\n";
+    cout << "Size: " << queueDeque.size() << "\n";
+    cout << "Front: " << queueDeque.front() << ", Back: " << queueDeque.back() << "\n";
+    cout << "Pop front: " << queueDeque.front() << "\n";
+    queueDeque.pop();
+    cout << "After pop, Front: " << queueDeque.front() << " (Size: " << queueDeque.size() << ")\n";
+    cout << "✅ FIFO works! (5 goes in first, comes out first)\n";
+    cout << "✅ Deque is PERFECT for queue (O(1) at both ends!)\n\n";
+
+    // ============================================================================
     // EXAMPLE 3: PRIORITY QUEUE - Wrapper around Vector/Heap
     // ============================================================================
 
@@ -117,7 +361,7 @@ int main() {
     for (int x : rawVec2) cout << x << " ";
     cout << "← Random order, no structure!\n\n";
 
-    cout << "WITH WRAPPER (Priority Queue - Hides heap):\n";
+    cout << "WITH WRAPPER (STL Priority Queue - Hides heap):\n";
     priority_queue<int> pq;
     pq.push(5);
     pq.push(3);
@@ -135,38 +379,79 @@ int main() {
     cout << "❌ You CAN'T iterate, CAN'T see structure\n\n";
 
     // ============================================================================
-    // EXAMPLE 4: Custom Wrapper - LIFO List (Stack-like)
+    // EXAMPLE 3A: CUSTOM PRIORITY QUEUE WITH VECTOR (MAX HEAP)
     // ============================================================================
 
-    cout << "\n=== EXAMPLE 4: CUSTOM WRAPPER ===\n";
-
-    cout << "I created MyStack that wraps a vector\n";
-    cout << "The vector is HIDDEN (private)\n\n";
-
-    MyStack myStack;
-    myStack.push(100);
-    myStack.push(200);
-    myStack.push(300);
-    cout << "Pushed 100, 200, 300\n";
-    cout << "Top: " << myStack.top() << "\n";
-    myStack.pop();
-    cout << "After pop, top: " << myStack.top() << "\n";
-    cout << "✅ Vector hidden! Only stack operations allowed!\n";
+    cout << "\n--- CUSTOM PRIORITY QUEUE WITH VECTOR (MAX HEAP) ---\n";
+    cout << "MyPriorityQueueVector uses vector + bubble up/down:\n";
+    cout << "push(x) → add to end, bubble up        O(log n)\n";
+    cout << "pop()   → remove root, move last to root, bubble down  O(log n)\n";
+    cout << "top()   → return root (max element)\n\n";
+    
+    MyPriorityQueueVector pqVec;
+    pqVec.push(5);
+    pqVec.push(3);
+    pqVec.push(7);
+    pqVec.push(1);
+    pqVec.push(9);
+    cout << "Pushed 5, 3, 7, 1, 9\n";
+    cout << "Heap structure maintained internally!\n";
+    cout << "Top (max): " << pqVec.top() << "\n";
+    cout << "Pop order: ";
+    while (!pqVec.empty()) {
+        cout << pqVec.top() << " ";
+        pqVec.pop();
+    }
+    cout << "← Max heap order!\n";
+    cout << "✅ Vector-based max heap works!\n\n";
 
     // ============================================================================
-    // COMPARISON TABLE
+    // COMPARISON TABLE - ALL CONTAINERS
     // ============================================================================
 
-    cout << "\n\n=== COMPARISON ===\n";
-    cout << "┌─────────────────┬──────────────────┬─────────────────────────┐\n";
-    cout << "│ Container       │ Wraps What?      │ Hides What?             │\n";
-    cout << "├─────────────────┼──────────────────┼─────────────────────────┤\n";
-    cout << "│ vector          │ Raw memory       │ Nothing (full access)   │\n";
-    cout << "│ stack           │ vector/deque     │ Iteration, random access│\n";
-    cout << "│ queue           │ deque            │ Iteration, random access│\n";
-    cout << "│ priority_queue  │ vector (heap)    │ Iteration, heap structure│\n";
-    cout << "│ MyStack (custom)│ vector           │ The underlying vector   │\n";
-    cout << "└─────────────────┴──────────────────┴─────────────────────────┘\n";
+    cout << "\n\n=== COMPREHENSIVE COMPARISON ===\n";
+    cout << "┌─────────────────────┬──────────────────────┬────────────┬──────────────┐\n";
+    cout << "│ Container           │ Wraps What?          │ Push/Pop   │ Use Case     │\n";
+    cout << "├─────────────────────┼──────────────────────┼────────────┼──────────────┤\n";
+    cout << "│ MyStackVector       │ vector               │ O(1)/O(1)  │ LIFO (LIFO)  │\n";
+    cout << "│ MyStackDeque        │ deque                │ O(1)/O(1)  │ LIFO (LIFO)  │\n";
+    cout << "│ stack (STL)         │ deque (default)      │ O(1)/O(1)  │ LIFO (LIFO)  │\n";
+    cout << "├─────────────────────┼──────────────────────┼────────────┼──────────────┤\n";
+    cout << "│ MyQueueDeque        │ deque                │ O(1)/O(1)  │ FIFO (FIFO)  │\n";
+    cout << "│ queue (STL)         │ deque (default)      │ O(1)/O(1)  │ FIFO (FIFO)  │\n";
+    cout << "├─────────────────────┼──────────────────────┼────────────┼──────────────┤\n";
+    cout << "│ MyPriorityQueueVec  │ vector (heap)        │ O(logn)/.. │ Sorting      │\n";
+    cout << "│ priority_queue (STL)│ vector (heap)        │ O(logn)/.. │ Sorting      │\n";
+    cout << "└─────────────────────┴──────────────────────┴────────────┴──────────────┘\n";
+
+    // ============================================================================
+    // WHY EACH CONTAINER CHOICE
+    // ============================================================================
+
+    cout << "\n\n=== WHY THESE CONTAINER CHOICES? ===\n";
+    cout << R"(
+STACK with VECTOR:
+  ✅ push_back() at end = O(1)
+  ✅ pop_back() at end = O(1)
+  ❌ No need for front operations
+  
+STACK with DEQUE:
+  ✅ push_back() at end = O(1)
+  ✅ pop_back() at end = O(1)
+  ✅ Better memory efficiency for large stacks
+  
+QUEUE with DEQUE:
+  ✅ push_back() at back = O(1)
+  ✅ pop_front() at front = O(1)
+  ❌ Vector would need O(n) shift for front removal!
+  ✅ DEQUE IS PERFECT FOR QUEUE!
+  
+PRIORITY QUEUE with VECTOR:
+  ✅ Vector allows heap structure
+  ✅ bubbleUp() maintains max-heap property
+  ✅ bubbleDown() maintains max-heap property
+  ✅ O(log n) for both push and pop
+)";
 
     // ============================================================================
     // KEY TAKEAWAY
@@ -174,23 +459,35 @@ int main() {
 
     cout << "\n\n=== KEY TAKEAWAY ===\n";
     cout << R"(
-WRAPPING = Taking a container (vector, deque, heap) and HIDING it
-HIDING ITERATION = User can't loop through or access elements directly
+WRAPPING = Taking a container and HIDING it
 
-WHY?
-─────
-1. SAFETY: Can't accidentally break the data structure
-2. RULES: Forces specific operations (LIFO for stack, FIFO for queue)
-3. EFFICIENCY: Automatically maintains structure (heap for priority_queue)
-4. SIMPLICITY: User just calls push(), pop(), top() - that's it!
+CONTAINER CHOICES:
+──────────────────
+1. STACK
+   - Can use: vector OR deque
+   - Both work fine (operations at back only)
+   
+2. QUEUE
+   - MUST use: deque
+   - Why? Need O(1) at BOTH ends (front and back)
+   - Vector would be O(n) for front removal!
+   
+3. PRIORITY QUEUE
+   - MUST use: vector + heap
+   - Why? Heap property needs random access
+   - Deque doesn't provide good heap performance
+
+MEMORY LAYOUT:
+──────────────
+Vector:   [data contiguous in memory] - fast for sequential access
+Deque:    [multiple blocks] - fast for both ends operations
+Heap:     [tree structure in array] - organized by priority
 
 ANALOGY:
 ────────
-Think of a vending machine:
-- OUTSIDE: Buttons (push, pop, top)
-- INSIDE: Hidden mechanism (vector/deque)
-- RULES: Can't reach inside and grab what you want
-- RESULT: Safe, predictable, efficient!
+Stack = Parking lot, only access top (vector or deque both work)
+Queue = Line at bank, add to back, remove from front (NEED DEQUE!)
+Priority = Hospital queue (critical patients first) (NEED HEAP!)
 )";
 
     return 0;
@@ -200,21 +497,27 @@ Think of a vending machine:
 SUMMARY:
 ═════════
 
-Stack, Queue, Priority Queue = WRAPPERS
-They wrap other containers (vector, deque) INSIDE them
-They HIDE the wrapped container
-They HIDE how to iterate
+All STL containers are WRAPPERS:
+✅ stack wraps vector or deque
+✅ queue wraps deque
+✅ priority_queue wraps vector (as heap)
 
-Why?
-- Enforce specific rules (LIFO, FIFO, heap property)
-- Prevent user from breaking the structure
-- Make the interface simple (just a few methods)
+WHY WRAP?
+─────────
+1. SAFETY: Hide internal structure
+2. ENFORCE RULES: LIFO, FIFO, max/min first
+3. SIMPLICITY: Just push(), pop(), top()
+4. EFFICIENCY: Optimized operations
 
-Real analogy:
-- Vector = Open shelf (you can grab anything)
-- Stack = Closed box with one hole on top (only pop from top)
-- Queue = Closed box with holes on both ends (pop from front, push to back)
-- Priority Queue = Smart box (automatically sorts by priority)
+CONTAINER CHOICE MATTERS:
+─────────────────────────
+Stack + Vector = ✅ Works (push_back, pop_back)
+Stack + Deque = ✅ Works (push_back, pop_back)
+Queue + Vector = ❌ NO! (pop_front would be O(n))
+Queue + Deque = ✅ Perfect! (push_back O(1), pop_front O(1))
+PriorityQueue + Vector = ✅ Perfect! (heap structure)
+PriorityQueue + Deque = ❌ Bad (random access not efficient)
 
-All are wrappers! All hide their internals!
+KEY INSIGHT: Different containers have different strengths!
+Use the RIGHT container for the RIGHT wrapper!
 */
