@@ -40,6 +40,17 @@ int main(){
     // int &y=x;
     // cout<<*(&y); // 0
 
+     // int *ptr=nullptr;
+    // int x=10;
+    // ptr=&x;
+    // cout<<*ptr<<endl;
+    // cout<<ptr<<endl;
+    // cout<<x<<endl;
+    // cout<<&x<<endl;
+    // *ptr=20;
+    // cout<<*ptr<<endl;
+    // cout<<x<<endl;
+    
     // int x=10;
     // int *p;
     // p=&x;

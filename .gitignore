@@ -1,7 +1,56 @@
-/.vscode
+
+# ==========================
+# Project .gitignore
+# ==========================
+
+# IDE / editor
+/.vscode/
+.vscode/
+.idea/
+.vs/
+
+# Build output directories
+/output/
+/build/
+/bin/
+/out/
+
+# Compiled object files and binaries
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.out
+*.exe
+*.exe.stackdump
+
+# C/C++ build systems
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+
+# MinGW / GCC temporary
+*.stackdump
+
+# Logs, temp and misc
+*.log
+*~
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Specific project binaries (kept for compatibility but covered by *.exe)
 /doubts.exe
 /multidimensionalarray_and_templates.exe
 /OOPS-in-CPP.exe
-/output
 /string.exe
 /struct_and_union.exe
