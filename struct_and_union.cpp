@@ -35,6 +35,11 @@ struct nikhil{
     int x,y;
 
 };
+//abstract is like blueprint and =0 means the child should contain this method
+class Shape {
+public:
+    virtual void draw() = 0; // 👈 rule (no body, no code)
+};
 void print(nikhil p){
     cout<<p.x<<" "<<p.y;
 }

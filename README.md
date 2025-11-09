@@ -20,7 +20,7 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 2. **Array**
 3. **Pointers & Reference**
 4. **String**
-5. **Structure and Union**
+5. **Structure and Union and class**
 6. ** Templates**
 7. **OOPS**
 8. **Smart Pointers and File Handling**

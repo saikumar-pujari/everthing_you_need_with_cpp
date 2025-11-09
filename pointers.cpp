@@ -18,6 +18,18 @@ void funcx(int x){
 void funcx(int *ptr){
 
 }
+class Animal {
+public:
+    void eat()  { cout << "Animal eating\n"; }
+    virtual void speak() { cout << "Animal sound\n"; }
+};
+
+class Dog : public Animal {
+public:
+    void speak() override { cout << "Dog barks\n"; }
+    void bark() { cout << "Bark! Bark!\n"; }
+};
+
 int main(){
     // int x=0;
     // cout<<&x<<endl; // (address of x, e.g. 0x7ffee4b8c8ac)
@@ -153,6 +165,38 @@ int main(){
     // delete[] arr;
     // arr = newArr;
     // size = newSize;
+
+
+    //----------base-class calling a derived class----------
+    //when you have a base class(interface)  you can call your derived method through the base class but the method--
+    //--should be present in both the class or else we need to implicity show the compiler there exists a method in--
+    //--dervied class and base class is using it
+
+    //IMPORTANT--> a clinet only interacts with with interfeace(base_class) so calling wiith derived from base_class is important
+
+    // normak_calling_of_pointer
+    Dog d;
+    d.bark();
+    d.speak();
+
+    Animal a;
+    a.speak();
+    a.eat();
+    //calling a derived class using base_class
+    Animal* a1=new Dog();       //Animal view → parent method
+    a1->speak();
+
+    Animal* a2=new Dog();
+    // a2->bark();     //error cause there is no method bark in the base-class
+    ((Dog*)a2)->bark(); //we can use its alternative here by using cast(static_casting)(static_down)
+    delete a1;
+    delete a2;
+    // +-----------------------+
+    // |       Animal* a1      | ----> [ Dog object in heap ]
+    // |                       |        ├── Animal::eat()
+    // |                       |        ├── Dog::speak()   (virtual)
+    // |                       |        └── Dog::bark()
+    // +-----------------------+
 
     return 0;
 }
