@@ -15,13 +15,13 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 ---
 
 ## Recommended Reading Order
-
+##### **Time(UTC&GMT)**
 1. **Functions**
 2. **Array**
 3. **Pointers & Reference**
 4. **String**
 5. **Structure and Union and class**
-6. ** Templates**
+6. **Templates**
 7. **OOPS**
 8. **Smart Pointers and File Handling**
 9. **STL**
@@ -31,6 +31,8 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 13. **sets and maps**
 14. **linked list,linked_list and custom_browser_history**
 15. **mutating and non_mutating**
+16. **regex**
+
 
 
 ---

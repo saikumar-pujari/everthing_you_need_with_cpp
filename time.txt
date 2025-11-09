@@ -1,0 +1,48 @@
+🕒 1️⃣ What is Time (in computers)?
+
+Time in computers isn’t just what you see on the clock — it’s how machines keep track of “when things happen.” Computers measure time in seconds, usually using a big counter that keeps ticking from a fixed starting point (called the epoch). But since computers and humans think about time differently (humans use calendars, timezones, etc.), we need ways to convert and align them.
+
+🌍 2️⃣ UTC (Universal Time Coordinated)
+
+UTC is the world’s “master time.” It’s like the official global clock everyone agrees on. It doesn’t change for seasons or countries. If you and someone in another country both say “12:00 UTC,” you mean exactly the same moment — even if your local clocks look different. It’s the base reference for all other times.
+eg->India(UTC+5:30),Austrilia(UTC+9:30)
+🕰️ 3️⃣ GMT vs UTC
+
+GMT (Greenwich Mean Time) was the old name used when time was based on the Earth’s rotation at Greenwich, England. But because the Earth’s rotation isn’t perfectly stable, UTC replaced it. Think of UTC as the scientific, precise version of GMT that keeps everything in sync across the world.
+
+🌐 4️⃣ Timezones
+
+Timezones are just offsets from UTC. For example, India’s timezone is UTC + 5:30, meaning 5 hours and 30 minutes ahead of UTC. The USA, Europe, Japan — each has its own offset. These offsets are for humans’ convenience (so that “noon” is roughly when the sun is overhead). But computers usually store everything in UTC to stay consistent.
+
+🌞 5️⃣ Daylight Saving Time (DST)
+
+Some countries change their clocks in summer and winter (move them forward or backward by an hour) to save daylight. This is called Daylight Saving Time. But UTC never changes. That’s why, when storing or calculating times in programs, we use UTC — so your code doesn’t break when clocks “jump” forward or backward.
+
+⏱️ 6️⃣ Unix Time
+
+Unix time is how most computers represent time. It’s just the number of seconds since January 1, 1970, UTC. This makes it super easy to store and compare. For example, 1,700,000,000 means that many seconds have passed since that day. It’s like starting a stopwatch in 1970 and letting it run forever.
+
+🔁 7️⃣ Leap Seconds
+
+Earth’s rotation isn’t perfectly steady, so sometimes the official UTC clock adds an extra second called a leap second to stay aligned. That means one minute might have 61 seconds! Some systems handle this weirdly (like repeating the last second), so programmers must know it exists — otherwise, your “time” might suddenly go backwards for one second.
+
+💾 8️⃣ Monotonic Clock vs System Clock
+
+There are two types of clocks in computers:
+
+The system clock (the one you see on screen, which can change if you sync or adjust time).
+
+The monotonic clock, which never goes backward — used for measuring durations or performance.
+Use the system clock for “what time it is,” and the monotonic clock for “how long it took.”
+
+🧠 9️⃣ Why You Should Use UTC in Code
+
+Always store and work with time in UTC, not local time. UTC is constant and universal. If your code runs in servers across countries (like backend systems), using UTC ensures every event line-up perfectly. Only convert to local time when showing it to users.
+
+⚙️ 🔟 Why Time is Tricky
+
+Time looks simple, but it’s one of the hardest things in programming — clocks drift, leap seconds happen, countries change timezones, and servers can disagree on time. That’s why you should never write your own time logic — use trusted libraries that handle all this madness for you.
+
+🚀 Bonus: Real-Life Example
+
+Say you’re logging events in your backend service. If you store “Nov 9, 2025, 6:00 PM India Time,” another server in the USA won’t know what that means. But if you store “1731162600 (Unix UTC seconds),” both can understand it exactly. Later, when you show the data to users, you convert that UTC time back to local time like “6:00 PM IST.”

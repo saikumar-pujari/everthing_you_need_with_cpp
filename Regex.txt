@@ -1,0 +1,225 @@
+──────────────────────────────
+📘 BASIC CONCEPT
+──────────────────────────────
+Regex = pattern language to match or extract text.
+
+Example: \\d{5} → matches exactly 5 digits.
+
+──────────────────────────────
+⚙️ META CHARACTERS
+──────────────────────────────
+.  → any character except newline
+^  → start of line
+$  → end of line
+\\d → digit [0-9]
+\\D → non-digit
+\\w → word char [A-Za-z0-9_]
+\\W → non-word char
+\\s → space/tab/newline
+\\S → non-space
+
+──────────────────────────────
+🔁 QUANTIFIERS
+──────────────────────────────
+*   → 0 or more
++   → 1 or more
+?   → 0 or 1 (optional)
+{n} → exactly n times
+{n,} → n or more
+{n,m} → between n and m
+
+💡 Examples:
+go*d → gd, god, good, goood
+colou?r → color / colour
+
+──────────────────────────────
+📦 CHARACTER SETS [ ]
+──────────────────────────────
+[a-z] → lowercase letters
+[A-Z] → uppercase letters
+[0-9] → digits
+[a-zA-Z0-9_] → all alphanumerics
+[^0-9] → anything except digits
+
+💡 Examples:
+[aeiou] → any vowel
+[^A-Za-z0-9] → any symbol
+
+──────────────────────────────
+🧩 GROUPING & ALTERNATION
+──────────────────────────────
+(abc) → group
+(?:abc) → non-capturing group
+| → OR operator
+
+💡 Examples:
+(ha)+ → ha, haha, hahahaha
+gr(a|e)y → gray / grey
+\\b(\\w+)\\s+\\1\\b → repeated word ("bye bye")
+
+──────────────────────────────
+📍 ANCHORS
+──────────────────────────────
+^ → start of line
+$ → end of line
+\\b → word boundary
+\\B → non-boundary
+
+💡 Examples:
+^Hi → start with Hi
+bye$ → end with bye
+\\bcat\\b → match “cat” only, not “catalog”
+
+──────────────────────────────
+🔍 LOOKAROUNDS
+──────────────────────────────
+(?=...) → positive lookahead
+(?!...) → negative lookahead
+(?<=...) → positive lookbehind
+(?<!...) → negative lookbehind
+
+💡 Examples:
+\\d(?=kg) → number followed by "kg"
+cat(?!fish) → cat not followed by "fish"
+(?<=\\$)\\d+ → number after $
+(?<!USD)\\d+ → number not after USD
+
+──────────────────────────────
+🧠 SHORTCUT SUMMARY
+──────────────────────────────
+\\d → [0-9]
+\\w → [A-Za-z0-9_]
+\\s → [ \\t\\n]
+.  → any char
+^...$ → full-line match
+(abc|xyz) → OR pattern
+a{2,4} → 2 to 4 a’s
+\\bword\\b → exact word match
+
+──────────────────────────────
+🚀 REAL-LIFE REGEX
+──────────────────────────────
+Email → [A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}
+Phone → \\b\\d{10}\\b
+Date → \\d{2}/\\d{2}/\\d{4}
+Password → ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$
+Hashtag → #\\w+
+
+──────────────────────────────
+⚡ TIPS
+──────────────────────────────
+✅ Use ^ and $ for exact matches
+✅ Use \\b for full words
+✅ Non-greedy match → .*?
+✅ Escape special chars: \\., \\*, \\+, \\?
+✅ Practice → regex101.com
+
+
+
+=== REGEX (REGULAR EXPRESSIONS) - COMPLETE GUIDE ===
+
+1. BASIC PATTERNS
+   - Literal characters: Match exact characters
+   Example: "cat" matches "cat" in "The cat sat"
+   
+2. CHARACTER CLASSES
+   - [abc]: Match any one character from the set
+   Example: "[aeiou]" matches any vowel in "hello"
+   
+   - [^abc]: Match any character NOT in the set
+   Example: "[^0-9]" matches any non-digit
+   
+   - [a-z]: Match characters in range
+   Example: "[a-z]" matches any lowercase letter
+   
+   - \d: Match any digit (0-9)
+   Example: "\d{3}" matches "123" in "Phone: 123-456"
+   
+   - \w: Match word characters (a-z, A-Z, 0-9, _)
+   Example: "\w+" matches "hello_world"
+   
+   - \s: Match whitespace (space, tab, newline)
+   Example: "\s+" matches spaces between words
+
+3. QUANTIFIERS (How many times to match)
+   - *: Zero or more times
+   Example: "ab*c" matches "ac", "abc", "abbc"
+   
+   - +: One or more times
+   Example: "ab+c" matches "abc", "abbc" (NOT "ac")
+   
+   - ?: Zero or one time
+   Example: "ab?c" matches "ac" or "abc"
+   
+   - {n}: Exactly n times
+   Example: "\d{3}" matches exactly 3 digits "123"
+   
+   - {n,m}: Between n and m times
+   Example: "\d{2,4}" matches 2-4 digits "12" or "1234"
+
+4. ANCHORS (Position in string)
+   - ^: Start of string
+   Example: "^hello" matches "hello world" (NOT "say hello")
+   
+   - $: End of string
+   Example: "world$" matches "hello world" (NOT "world map")
+   
+   - \b: Word boundary
+   Example: "\bcat\b" matches "cat" in "The cat sat" (NOT "caterpillar")
+
+5. GROUPS & ALTERNATION
+   - (abc): Group - treat as single unit
+   Example: "(ab)+" matches "ab", "abab", "ababab"
+   
+   - a|b: Alternation - match either a OR b
+   Example: "cat|dog" matches "cat" or "dog"
+   
+   - (?:...): Non-capturing group
+   Example: "(?:ab)+" performs grouping without capturing
+
+6. ESCAPE SEQUENCES
+   - \.: Literal dot (not any character)
+   Example: "\.com" matches ".com" in "google.com"
+   
+   - \\: Literal backslash
+   Example: "C:\\Users" matches "C:\Users"
+
+7. COMMON REAL-WORLD EXAMPLES
+
+   Email validation:
+   ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+   Matches: user@example.com
+   
+   Phone number (US):
+   ^\d{3}-\d{3}-\d{4}$
+   Matches: 123-456-7890
+   
+   URL validation:
+   ^https?://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+   Matches: https://www.example.com
+   
+   Password (8+ chars, 1 uppercase, 1 lowercase, 1 digit):
+   ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$
+   Matches: MyPass123
+   
+   Hex color code:
+   ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+   Matches: #FF5733 or #F57
+
+8. FLAGS (Modifiers)
+   - g: Global - find all matches
+   - i: Case-insensitive
+   - m: Multiline
+   Example: /hello/gi matches "hello", "HELLO", "Hello"
+
+9. SPECIAL FUNCTIONS
+   - match(): Find matches in a string
+   - replace(): Replace matched patterns
+   - test(): Check if pattern exists
+   - split(): Split string by pattern
+   Example: "hello123world".match(/\d+/) returns "123"
+
+=== QUICK REFERENCE ===
+\d = digit, \w = word char, \s = whitespace
+. = any char, ^ = start, $ = end, | = or
+() = group, [] = class, * = 0+, + = 1+, ? = 0-1
