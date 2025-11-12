@@ -27,11 +27,13 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 9. **STL**
 10. **Pairs**
 11. **Vectors, Lists, Deque**
-12. **Stacks ,Queues and priority queues**
+12. **Stacks ,Queues and priority queues(also refere wrappers files for better understanding)**
 13. **sets and maps**
 14. **linked list,linked_list and custom_browser_history**
 15. **mutating and non_mutating**
 16. **regex**
+17. **sorting**
+18. **number_theory**
 
 
 
