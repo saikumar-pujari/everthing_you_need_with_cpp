@@ -43,13 +43,13 @@ int main(){
      // int *ptr=nullptr;
     // int x=10;
     // ptr=&x;
-    // cout<<*ptr<<endl;
-    // cout<<ptr<<endl;
-    // cout<<x<<endl;
-    // cout<<&x<<endl;
+    // cout<<*ptr<<endl;        //10
+    // cout<<ptr<<endl;     //adress of ptr(x)
+    // cout<<x<<endl;   //10
+    // cout<<&x<<endl;  //adress of x
     // *ptr=20;
-    // cout<<*ptr<<endl;
-    // cout<<x<<endl;
+    // cout<<*ptr<<endl;    //20
+    // cout<<x<<endl;   //20
     
     // int x=10;
     // int *p;
@@ -83,7 +83,7 @@ int main(){
     // int a=10;
     // int& g=a;
     // g++;
-    // cout<<a<<" "<<g<<endl;    //both are refering to same address so increment of the g will effect the a also!
+    // cout<<a<<" "<<g<<endl;    //both are refering to same address so increment of the g will effect the a also!  11 11
 
     // int* p=nullptr;
     // cout<<*p;
@@ -187,19 +187,20 @@ int main(){
 
     // normak_calling_of_pointer
     Dog d;
-    d.bark();
-    d.speak();
+    d.bark(); // Output: Bark! Bark!
+    d.speak(); // Output: Dog barks
 
     Animal a;
-    a.speak();
-    a.eat();
-    //calling a derived class using base_class
-    Animal* a1=new Dog();       //Animal view → parent method
-    a1->speak();
+    a.speak(); // Output: Animal sound
+    a.eat(); // Output: Animal eating
 
-    Animal* a2=new Dog();
+    //calling a derived class using base_class
+    Animal* a1=new Dog(); // Output: (no output here, just allocation)
+    a1->speak(); // Output: Dog barks
+
+    Animal* a2=new Dog(); // Output: (no output here, just allocation)
     // a2->bark();     //error cause there is no method bark in the base-class
-    ((Dog*)a2)->bark(); //we can use its alternative here by using cast(static_casting)(static_down)
+    ((Dog*)a2)->bark(); // Output: Bark! Bark!
     delete a1;
     delete a2;
     // +-----------------------+

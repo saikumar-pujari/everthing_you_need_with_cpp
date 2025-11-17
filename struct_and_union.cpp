@@ -66,7 +66,16 @@ struct s1 {
         protected:
         float z;
     };
-
+//enum is a user defined way where its used for safety and fixed set of related constant
+enum day{
+    Monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday
+};
 int main(){
     // struct is user defined and public 
     // points p;

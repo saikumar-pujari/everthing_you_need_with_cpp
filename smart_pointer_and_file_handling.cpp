@@ -7,9 +7,9 @@ void f(int &s){
 class sp{
     int *ptr;
     public:
-        sp(int *p=nullptr){
+        sp(int *ptr=nullptr){
             cout<<"satrted\n"; // Output: satrted
-            ptr=p;
+            this->ptr=ptr;
         }
         ~sp(){
             cout<<"\ndeleted\n"; // Output: deleted

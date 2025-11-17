@@ -34,6 +34,8 @@ A comprehensive C++ resource focusing on function pointers, smart pointers, and 
 16. **regex**
 17. **sorting**
 18. **number_theory**
+19. **recursion_backtracking.cpp**
+20. **hashing**
 
 
 
