@@ -382,6 +382,43 @@ void towerOfHanoi(int n, char from, char to, char aux) {
     cout << "Move disk " << n << " from " << from << " to " << to << "\n";
     towerOfHanoi(n - 1, aux, to, from);
 }
+//meet in middle
+bool meetInMiddle(vector<long long>& arr, long long target) {
+    int n = arr.size();
+    int mid = n / 2;
+
+    vector<long long> left, right;
+
+    // left half
+    for (int mask = 0; mask < (1 << mid); mask++) {
+        long long sum = 0;
+        for (int i = 0; i < mid; i++) {
+            if (mask & (1 << i)) sum += arr[i];
+        }
+        left.push_back(sum);
+    }
+
+    // right half
+    int rsize = n - mid;
+    for (int mask = 0; mask < (1 << rsize); mask++) {
+        long long sum = 0;
+        for (int i = 0; i < rsize; i++) {
+            if (mask & (1 << i)) sum += arr[mid + i];
+        }
+        right.push_back(sum);
+    }
+
+    sort(right.begin(), right.end());
+
+    // check if any left sum + right sum == target
+    for (long long x : left) {
+        long long need = target - x;
+        if (binary_search(right.begin(), right.end(), need))
+            return true;
+    }
+    return false;
+}
+
 // ============================================================================
 // MAIN - TEST CASES
 // ============================================================================

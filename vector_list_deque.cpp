@@ -272,6 +272,9 @@ for(int num:dq){
     cout<<num<<" ";   //output:- 1 10 20 30 255
 }cout << "\n";
 cout<<dq.front()<<" "<<dq.back()<<endl;  //output:- 1  255
+// The internal implementation of a deque is more complex than that of a vector,
+// and for this reason, a deque is slower than a vector. Still, both adding and
+// removing elements take O(1) time on average at both ends.
 
 
 return 0;
