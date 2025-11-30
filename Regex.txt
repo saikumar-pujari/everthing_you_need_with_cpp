@@ -2,6 +2,7 @@
 📘 BASIC CONCEPT
 ──────────────────────────────
 Regex = pattern language to match or extract text.
+regex is mostly used in searching,compilers,string validation and pattern matching. it also uses a finite automata to solve its pattern
 
 Example: \\d{5} → matches exactly 5 digits.
 

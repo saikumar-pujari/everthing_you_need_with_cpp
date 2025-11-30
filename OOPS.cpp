@@ -2,6 +2,10 @@
 using namespace std;
 #define IMPORTANT
 
+//i have missed a concept of operator overlading so here is a pseudocode of that 
+    // Number operator + (Number obj) {     //number is a class call(constructor)
+    //         return Number(value + obj.value);
+    //     }
 
 class MyClass {
 public:
