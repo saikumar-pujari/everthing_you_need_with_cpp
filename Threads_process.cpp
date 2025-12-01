@@ -287,96 +287,96 @@ int main(){
     
     // cout << "\n========== TESTING ALL THREADING TOPICS ==========\n\n";
     
-    // // TOPIC 1: Basic Thread Creation & Join
-    // cout << "=== TOPIC 1: Basic Thread & Join ===\n";
-    // auto start_time=chrono::high_resolution_clock::now();
-    // thread t1(simpleCount);
-    // cout << "User can still type while counting...\n";
-    // t1.join(); // Wait for thread to finish
-    // auto end_time = chrono::high_resolution_clock::now();
-    // auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
-    // cout << "Time: " << duration << " ms\n\n";
+    // TOPIC 1: Basic Thread Creation & Join
+    cout << "=== TOPIC 1: Basic Thread & Join ===\n";
+    auto start_time=chrono::high_resolution_clock::now();
+    thread t1(simpleCount);
+    cout << "User can still type while counting...\n";
+    t1.join(); // Wait for thread to finish
+    auto end_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
+    cout << "Time: " << duration << " ms\n\n";
 
-    // // TOPIC 2: Thread Detach vs Join
-    // cout << "=== TOPIC 2: Thread Detach & Joinable ===\n";
-    // thread t2(run,3);
-    // cout<<"main thread continues\n";
-    // if(t2.joinable())
-    //     t2.join(); // Can use t2.detach() to run independently
-    // cout<<"after wait\n\n";
+    // TOPIC 2: Thread Detach vs Join
+    cout << "=== TOPIC 2: Thread Detach & Joinable ===\n";
+    thread t2(run,3);
+    cout<<"main thread continues\n";
+    if(t2.joinable())
+        t2.join(); // Can use t2.detach() to run independently
+    cout<<"after wait\n\n";
 
-    // // TOPIC 3: Mutex Basic Lock/Unlock
-    // cout << "=== TOPIC 3: Mutex Lock/Unlock ===\n";
-    // saving = 0;
-    // thread t3(addamount,10);
-    // thread t4(addamount,20);
-    // t3.join();
-    // t4.join();
-    // cout<<"Total Saving: "<<saving<<"\n\n";
+    // TOPIC 3: Mutex Basic Lock/Unlock
+    cout << "=== TOPIC 3: Mutex Lock/Unlock ===\n";
+    saving = 0;
+    thread t3(addamount,10);
+    thread t4(addamount,20);
+    t3.join();
+    t4.join();
+    cout<<"Total Saving: "<<saving<<"\n\n";
 
-    // // TOPIC 4: Try Lock
-    // cout << "=== TOPIC 4: Try Lock ===\n";
-    // counter = 0;
-    // thread t5(countWithTryLock);
-    // thread t6(countWithTryLock);
-    // t5.join();
-    // t6.join();
-    // cout<<"Counter with try_lock: "<<counter<<"\n\n";
+    // TOPIC 4: Try Lock
+    cout << "=== TOPIC 4: Try Lock ===\n";
+    counter = 0;
+    thread t5(countWithTryLock);
+    thread t6(countWithTryLock);
+    t5.join();
+    t6.join();
+    cout<<"Counter with try_lock: "<<counter<<"\n\n";
     
-    // // TOPIC 5: Timed Mutex
-    // cout << "=== TOPIC 5: Timed Mutex ===\n";
-    // passs = 0;
-    // thread t7(pas,1);
-    // thread t8(pas,2);
-    // t7.join();
-    // t8.join();
-    // cout<<"Pass count: "<<passs<<"\n\n";
+    // TOPIC 5: Timed Mutex
+    cout << "=== TOPIC 5: Timed Mutex ===\n";
+    passs = 0;
+    thread t7(pas,1);
+    thread t8(pas,2);
+    t7.join();
+    t8.join();
+    cout<<"Pass count: "<<passs<<"\n\n";
 
-    // // TOPIC 6: Recursive Mutex
-    // cout << "=== TOPIC 6: Recursive Mutex ===\n";
-    // recursive_counter = 0;
-    // thread t9(recursiveFunction, 3);
-    // t9.join();
-    // cout<<"Recursive counter: "<<recursive_counter<<"\n\n";
+    // TOPIC 6: Recursive Mutex
+    cout << "=== TOPIC 6: Recursive Mutex ===\n";
+    recursive_counter = 0;
+    thread t9(recursiveFunction, 3);
+    t9.join();
+    cout<<"Recursive counter: "<<recursive_counter<<"\n\n";
 
-    // // TOPIC 7: Lock Guard
-    // cout << "=== TOPIC 7: Lock Guard ===\n";
-    // guard_counter = 0;
-    // thread t10(countWithLockGuard);
-    // thread t11(countWithLockGuard);
-    // t10.join();
-    // t11.join();
-    // cout<<"Guard counter: "<<guard_counter<<"\n\n";
+    // TOPIC 7: Lock Guard
+    cout << "=== TOPIC 7: Lock Guard ===\n";
+    guard_counter = 0;
+    thread t10(countWithLockGuard);
+    thread t11(countWithLockGuard);
+    t10.join();
+    t11.join();
+    cout<<"Guard counter: "<<guard_counter<<"\n\n";
 
-    // // TOPIC 8: Unique Lock
-    // cout << "=== TOPIC 8: Unique Lock ===\n";
-    // unique_counter = 0;
-    // thread t12(countWithUniqueLock);
-    // thread t13(countWithUniqueLock);
-    // t12.join();
-    // t13.join();
-    // cout<<"Unique counter: "<<unique_counter<<"\n\n";
+    // TOPIC 8: Unique Lock
+    cout << "=== TOPIC 8: Unique Lock ===\n";
+    unique_counter = 0;
+    thread t12(countWithUniqueLock);
+    thread t13(countWithUniqueLock);
+    t12.join();
+    t13.join();
+    cout<<"Unique counter: "<<unique_counter<<"\n\n";
 
-    // // TOPIC 9: Multiple Mutex Lock
-    // cout << "=== TOPIC 9: Lock Multiple Mutexes ===\n";
-    // multi_lock_data = 0;
-    // thread t14(multiLockExample);
-    // thread t15(multiLockExample);
-    // t14.join();
-    // t15.join();
-    // cout<<"Multi-lock data: "<<multi_lock_data<<"\n\n";
+    // TOPIC 9: Multiple Mutex Lock
+    cout << "=== TOPIC 9: Lock Multiple Mutexes ===\n";
+    multi_lock_data = 0;
+    thread t14(multiLockExample);
+    thread t15(multiLockExample);
+    t14.join();
+    t15.join();
+    cout<<"Multi-lock data: "<<multi_lock_data<<"\n\n";
 
-    // cout << "========== ALL TOPICS DEMONSTRATED ==========\n";
+    cout << "========== ALL TOPICS DEMONSTRATED ==========\n";
     
-    // thread t1(withdraw,100);
-    // thread t2(addmoney,100);
-    // t1.join();
-    // t2.join();
+    thread t1(withdraw,100);
+    thread t2(addmoney,100);
+    t1.join();
+    t2.join();
 
 
-    // long long start=0,end=1900000000;
-    // future<long long>oddsum=async(launch::async,findodd,start,end);
-    // cout<<oddsum.get();
+    long long start=0,end=1900000000;
+    future<long long>oddsum=async(launch::async,findodd,start,end);
+    cout<<oddsum.get();
 
     return 0;
 }
