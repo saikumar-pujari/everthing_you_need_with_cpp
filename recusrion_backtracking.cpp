@@ -91,6 +91,17 @@ string revserastring(string& name, int idx){
 // BACKTRACKING - SUBSETS AND COMBINATIONS
 // ============================================================================
 
+// PRUNING is an optimization technique in backtracking that stops exploration of paths 
+// that cannot lead to a valid solution, reducing unnecessary computation.
+//
+// Examples:
+// 1. Subset Sum: If we're generating subsets with sum = 4, we can add:
+//    if(sum > 4) return;  // PRUNING - stop when sum exceeds target
+//
+// 2. N-Queens: Queens cannot share the same row, column, or diagonal.
+//    Traditional backtracking tries all positions, but with pruning we skip invalid placements:
+//    if(col[c] || diag1[row+c] || diag2[row-c+n]) continue;  // PRUNING - skip occupied positions
+
 /**
  * Print all subsets of an array (Power Set)
  * Time: O(2^n), Space: O(n) - for recursion depth
@@ -382,6 +393,7 @@ void towerOfHanoi(int n, char from, char to, char aux) {
     cout << "Move disk " << n << " from " << from << " to " << to << "\n";
     towerOfHanoi(n - 1, aux, to, from);
 }
+
 //meet in middle
 bool meetInMiddle(vector<long long>& arr, long long target) {
     int n = arr.size();

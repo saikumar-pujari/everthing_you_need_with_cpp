@@ -8,6 +8,13 @@ bool checkPrime(int n){
     }return true;
 }
 
+int gcd (int a, int b) {
+    return b ? gcd (b, a % b) : a;
+}
+int lcm (int a, int b) {
+    return a / gcd(a, b) * b;
+}
+
 vector<int> primeFactorisation(int n){
     vector<int>ans;
     for(int i=2;i*i<=n;i++){
