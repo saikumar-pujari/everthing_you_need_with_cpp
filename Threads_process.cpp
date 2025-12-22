@@ -6,6 +6,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <future>
+#include <semaphore>
 using namespace std;
 
 // ============================================================================
@@ -278,6 +279,38 @@ void consumer(int id){
 //        - Use: Waiting for specific condition/event
 //        - Example: Interview waiting room, notified when it's your turn
 // ============================================================================
+
+
+// TOPIC 15: Semaphore
+// binary semaphore uses only 1 or 0(only one at a time)
+    counting_semaphore<2> parking(2);
+
+    void car(int id) {
+        parking.acquire();
+        cout << "Car " << id << " parked\n";
+        this_thread::sleep_for(2s);
+        cout << "Car " << id << " leaving\n";
+        parking.release();
+    }
+
+    binary_semaphore sem(1); // 1 token
+
+        void task(int id) {
+        sem.acquire();   // wait
+
+        cout << "Thread " << id << " entered\n";
+        this_thread::sleep_for(1s);
+        cout << "Thread " << id << " leaving\n";
+
+        sem.release();   // signal
+    }
+
+//TOPIC 16: Thread Pool
+// create onces and use it multiple times
+//and object pool is like creating 10 threads at onces and using them later when needed
+
+
+
 // ============================================================================
 // MAIN - UNCOMMENT SECTIONS TO TEST EACH TOPIC
 // ============================================================================
@@ -366,17 +399,49 @@ int main(){
     t15.join();
     cout<<"Multi-lock data: "<<multi_lock_data<<"\n\n";
 
-    cout << "========== ALL TOPICS DEMONSTRATED ==========\n";
-    
+    //TOPIC 10:Condition Variable
     thread t1(withdraw,100);
     thread t2(addmoney,100);
     t1.join();
     t2.join();
+    
+    // TOPIC 12:futer and promise
+    //the promise is initalized and the future func is connected with the promise and while calling the future func using .get_future(), we will move the promise and store the func result in the promise value when we need the fun value we will call the promise assisend with futer with initalized with futer to promise with .get()
+    // promise<long long>oddsumvalue;
+    // future<long long>future=oddsumvalue.get_future;
+    // thread t1(findodd,move(oddsumvalue),start,end);
+    // cout<<future.get();
+    // t1.join()
 
-
+    //async:Run the function immediately in a new thread,it will create a thread itself instead of future,promise ,it will does it all automatically!! and returns a value
     long long start=0,end=1900000000;
     future<long long>oddsum=async(launch::async,findodd,start,end);
     cout<<oddsum.get();
+    
+    //deferred:dont create a thread immediately only when run() or wait() is called. its like if the all threads are busy wait and then use one of them to workk when you asked to untill stay idil.....only runs when .get is called!!
 
+    // future<long long> f0705 = async(launch::deferred, findSum,start,end);
+    // cout << "Result = " << f.0705get() << endl;
+
+    // Topic 15:semphore:A semaphore is like a security guard with tokens.
+    // it has acquire,wait,release,signal
+
+    //binary semaphore
+    thread t1(task, 1);
+    thread t2(task, 2);
+    t1.join();
+    t2.join();
+
+
+    // count semaphore
+    thread c1(car, 1);
+    thread c2(car, 2);
+    thread c3(car, 3);
+    c1.join();
+    c2.join();
+    c3.join();
+
+
+    cout << "========== ALL TOPICS DEMONSTRATED ==========\n";
     return 0;
 }
