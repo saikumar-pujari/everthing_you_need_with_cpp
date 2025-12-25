@@ -70,7 +70,7 @@ void levelordertravsersal(node* root){
 int ans=0;
 //height of a tree
 int height(node* root){
-    if(root==nullptr)return 0;;
+    if(root==nullptr)return 0;
     ans=max(ans,height(root->left)+height(root->right));
     return max(height(root->left),height(root->right))+1;
 }
@@ -136,7 +136,57 @@ void topview(node* root){
     }
     for(auto& it:map)cout<<it.second<<"->";
 }
-
+//bootom view
+void bootomview(node* root){
+    map<int,int>map;
+    queue<pair<node*,int>>q;
+    q.push(make_pair(root,0));
+    while(!q.empty()){
+        node* curr=q.front().first;
+        int value=q.front().second;
+        q.pop();
+        map[value]=curr->data;
+        if(curr->left!=nullptr)q.push(make_pair(curr->left,value-1));
+        if(curr->right!=nullptr)q.push(make_pair(curr->right,value+1));
+    }
+    for(auto& it:map)cout<<it.second<<"->";
+}
+//right-side view
+void rightsideview(node* root){
+    if(root==nullptr)return;
+    vector<int>ans;
+    queue<node*>q;
+    q.push(root);
+    while(!q.empty()){
+        int size=q.size();
+        for(int i=0;i<size;i++){
+            node* curr=q.front();
+            q.pop();
+            if(i==size-1)ans.push_back(curr->data);
+            if(curr->left)q.push(curr->left);
+            if(curr->right)q.push(curr->right);
+        }
+    }
+    for(int num:ans)cout<<num<<"->";
+}
+//left-view
+void leftsideview(node* root){
+    if(root==nullptr)return;
+    vector<int>ans;
+    queue<node*>q;
+    q.push(root);
+    while(!q.empty()){
+        int size=q.size();
+        for(int i=0;i<size;i++){
+            node* curr=q.front();
+            q.pop();
+            if(i==0)ans.push_back(curr->data);
+            if(curr->left)q.push(curr->left);
+            if(curr->right)q.push(curr->right);
+        }
+    }
+    for(int num:ans)cout<<num<<"->";
+}
 //kth level 
 void kthlevel(node* root,int k){
     if(root==nullptr)return ;
@@ -312,6 +362,15 @@ int main(){
     cout<<"the diameter of a tree is"<<diameter(root)<<endl;
     cout<<"the top view of a tree:";
     topview(root);
+    cout << "\n";
+    cout<<"the bottom view is:";
+    bootomview(root);
+    cout << "\n";
+    cout<<"the right view is:";
+    rightsideview(root);
+    cout << "\n";
+    cout<<"the left view is:";
+    leftsideview(root);
     cout << "\n";
     cout<<"the kth level of elements in the tree:";
     kthlevel(root,2);
